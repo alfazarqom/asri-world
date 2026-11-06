@@ -5,7 +5,7 @@ import { formatIDR, toIDR } from '../utils/currency';
 import { getProductById } from '../data/products';
 
 export default function FavoritPage() {
-  const { wishlist, toggleFavorit, removeFromFavorit, addToCart } = useStore();
+  const { wishlist, removeFromFavorit, addToCart } = useStore();
   const items = wishlist.map(getProductById).filter(Boolean) as NonNullable<ReturnType<typeof getProductById>>[];
 
   if (items.length === 0) {
