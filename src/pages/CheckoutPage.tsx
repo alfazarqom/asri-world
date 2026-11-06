@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ChevronRight, CreditCard, Truck, MapPin, Mail, Phone, Check, Lock, ShoppingBag } from 'lucide-react';
 import { useStore } from '../store/StoreContext';
 import { FIXED_SHIPPING_IDR, formatIDR, toIDR } from '../utils/currency';
@@ -11,6 +11,7 @@ const REGION_API = 'https://www.emsifa.com/api-wilayah-indonesia/api';
 export default function CheckoutPage() {
   const { cart, clearCart, user } = useStore();
   const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState(1);
   const [provinces, setProvinces] = useState<Region[]>([]);
   const [cities, setCities] = useState<Region[]>([]);
@@ -29,8 +30,9 @@ export default function CheckoutPage() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const subtotalIDR = cart.reduce((sum, item) => sum + toIDR(item.product.price) * item.quantity, 0);
+  const discountIDR = Math.max(0, Math.min(subtotalIDR, (location.state as { discount?: number } | null)?.discount ?? 0));
   const shippingCost = cart.length > 0 ? FIXED_SHIPPING_IDR : 0;
-  const finalTotal = subtotalIDR + shippingCost;
+  const finalTotal = subtotalIDR - discountIDR + shippingCost;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -113,6 +115,7 @@ export default function CheckoutPage() {
         product: { ...item.product, price: toIDR(item.product.price), originalPrice: toIDR(item.product.originalPrice) },
       })),
       subtotal: subtotalIDR,
+      discount: discountIDR,
       shippingCost,
       total: finalTotal,
       shipping: {
