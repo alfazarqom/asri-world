@@ -6,7 +6,7 @@ import {
 import HeroCarousel from '../components/HeroCarousel';
 import ProductCard from '../components/ProductCard';
 import FlashSaleTimer from '../components/FlashSaleTimer';
-import { products, getProductsByTag } from '../data/products';
+import { getProductsByTag } from '../data/products';
 import { categories } from '../data/categories';
 import { useStore } from '../store/StoreContext';
 import { getProductById } from '../data/products';
