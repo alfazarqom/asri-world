@@ -23,15 +23,15 @@ export default function SignupPage() {
 
   const validate = () => {
     const e: typeof errors = {};
-    if (!name.trim()) e.name = 'Name is required';
-    else if (name.trim().length < 2) e.name = 'Name must be at least 2 characters';
-    if (!email) e.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Enter a valid email address';
-    if (!password) e.password = 'Password is required';
-    else if (password.length < 6) e.password = 'Password must be at least 6 characters';
-    else if (!passwordChecks.upper || !passwordChecks.number) e.password = 'Password needs an uppercase letter and a number';
-    if (password !== confirmPassword) e.confirmPassword = 'Passwords do not match';
-    if (!agree) e.agree = 'Please agree to the terms';
+    if (!name.trim()) e.name = 'Nama wajib diisi';
+    else if (name.trim().length < 2) e.name = 'Nama harus terdiri dari minimal 2 karakter';
+    if (!email) e.email = 'Alamat email wajib diisi';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Masukkan alamat email yang valid';
+    if (!password) e.password = 'Kata sandi wajib diisi';
+    else if (password.length < 6) e.password = 'Kata sandi harus terdiri dari minimal 6 karakter';
+    else if (!passwordChecks.upper || !passwordChecks.number) e.password = 'Kata sandi harus memiliki huruf kapital dan angka';
+    if (password !== confirmPassword) e.confirmPassword = 'Kata sandi tidak cocok';
+    if (!agree) e.agree = 'Harap setujui ketentuan yang berlaku';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -55,14 +55,14 @@ export default function SignupPage() {
               <Zap className="h-6 w-6" />
             </div>
           </Link>
-          <h1 className="mt-4 font-display text-2xl font-bold text-slate-900 dark:text-white">Create your account</h1>
-          <p className="mt-1.5 text-sm text-slate-500">Join DigitalWorld and start shopping smarter</p>
+          <h1 className="mt-4 font-display text-2xl font-bold text-slate-900 dark:text-white">Buat akun Anda</h1>
+          <p className="mt-1.5 text-sm text-slate-500">Bergabunglah dengan DigitalWorld dan nikmati pengalaman belanja yang lebih mudah</p>
         </div>
 
         <div className="card p-6 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Full Name</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Nama Lengkap</label>
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
@@ -70,14 +70,14 @@ export default function SignupPage() {
                   value={name}
                   onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
                   className={`input-field pl-11 ${errors.name ? 'border-error-500' : ''}`}
-                  placeholder="John Doe"
+                  placeholder="Nama Lengkap Anda"
                 />
               </div>
               {errors.name && <p className="mt-1.5 text-xs text-error-500">{errors.name}</p>}
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Email Address</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Alamat Email</label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
@@ -124,7 +124,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Confirm Password</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Konfirmasi Kata Sandi</label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
@@ -140,18 +140,18 @@ export default function SignupPage() {
 
             <label className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300 cursor-pointer">
               <input type="checkbox" checked={agree} onChange={(e) => { setAgree(e.target.checked); setErrors((p) => ({ ...p, agree: undefined })); }} className="h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500/30 mt-0.5" />
-              <span>I agree to the <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Terms of Service</a> and <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Privacy Policy</a></span>
+              <span>Saya menyetujui <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Ketentuan Layanan</a> and <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Kebijakan Privasi</a></span>
             </label>
             {errors.agree && <p className="text-xs text-error-500 -mt-2">{errors.agree}</p>}
 
             <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-              {loading ? 'Creating account...' : <>Create Account <ArrowRight className="h-4 w-4" /></>}
+              {loading ? 'Sedang membuat akun...' : <>Buat Akun <ArrowRight className="h-4 w-4" /></>}
             </button>
           </form>
         </div>
 
         <p className="mt-6 text-center text-sm text-slate-500">
-          Already have an account? <Link to="/login" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Sign in</Link>
+          Sudah memiliki akun? <Link to="/login" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Masuk</Link>
         </p>
       </div>
     </div>
