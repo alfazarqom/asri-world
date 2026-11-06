@@ -226,9 +226,9 @@ export default function ProductDetailPage() {
       <div className="mt-12">
         <div className="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar">
           {([
-            { key: 'description', label: 'Description' },
-            { key: 'specs', label: 'Specifications' },
-            { key: 'reviews', label: `Reviews (${product.reviews.length})` },
+            { key: 'description', label: 'Deskripsi' },
+            { key: 'specs', label: 'Spesifikasi' },
+            { key: 'reviews', label: `Ulasan (${product.reviews.length})` },
           ] as const).map((tab) => (
             <button
               key={tab.key}
