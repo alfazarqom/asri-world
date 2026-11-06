@@ -90,7 +90,7 @@ export default function CartPage() {
                     <div className="text-right">
                       <p className="font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(item.product.price) * item.quantity)}</p>
                       {itemDiscount > 0 && (
-                        <p className="text-xs text-slate-400 line-through"">{formatIDR(toIDR(item.product.originalPrice) * item.quantity)}</p>
+                        <p className="text-xs text-slate-400 line-through">{formatIDR(toIDR(item.product.originalPrice) * item.quantity)}</p>
                       )}
                     </div>
                   </div>
@@ -143,20 +143,11 @@ export default function CartPage() {
                 <span>Shipping</span>
                 <span className="font-medium text-slate-800 dark:text-slate-100">{formatIDR(shipping)}</span>
               </div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                <span>Tax (8%)</span>
-                <span className="font-medium text-slate-800 dark:text-slate-100">${tax.toFixed(2)}</span>
-              </div>
-              {shipping > 0 && (
-                <p className="text-xs text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950/50 rounded-lg p-2">
-                  Add ${(50 - cartTotal).toFixed(2)} more for free shipping!
-                </p>
-              )}
             </div>
 
             <div className="flex justify-between items-center border-t border-slate-100 dark:border-slate-800 pt-4 mt-4">
               <span className="font-semibold text-slate-800 dark:text-slate-100">Total</span>
-              <span className="font-display text-2xl font-bold text-slate-900 dark:text-white"">{formatIDR(finalTotal)}</span>
+              <span className="font-display text-2xl font-bold text-slate-900 dark:text-white">{formatIDR(finalTotal)}</span>
             </div>
 
             <button
