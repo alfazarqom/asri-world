@@ -273,7 +273,7 @@ export default function Navbar() {
               </div>
               {!user && (
                 <Link to="/login" className="btn-primary w-full mt-3">
-                  <User className="h-4 w-4" /> Masuk / Sign Up
+                  <User className="h-4 w-4" /> Masuk / Daftar
                 </Link>
               )}
             </div>
