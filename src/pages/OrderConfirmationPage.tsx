@@ -101,13 +101,13 @@ export default function OrderConfirmationPage() {
                   <Link to={`/product/${item.product.id}`} className="font-medium text-sm text-slate-800 dark:text-slate-100 truncate hover:text-primary-600 transition">{item.product.name}</Link>
                   <p className="text-xs text-slate-500" >Qty: {item.quantity} · {displayAmount(item.product.price)}</p>
                 </div>
-                <span className="font-semibold text-slate-900 dark:text-white"">{displayAmount(item.product.price * item.quantity)}</span>
+                <span className="font-semibold text-slate-900 dark:text-white">{displayAmount(item.product.price * item.quantity)}</span>
               </div>
             ))}
           </div>
           <div className="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-3 mt-3">
             <span className="font-semibold text-slate-800 dark:text-slate-100">Total Paid</span>
-            <span className="font-display text-xl font-bold text-slate-900 dark:text-white"">{displayAmount(order.total)}</span>
+            <span className="font-display text-xl font-bold text-slate-900 dark:text-white">{displayAmount(order.total)}</span>
           </div>
         </div>
 
