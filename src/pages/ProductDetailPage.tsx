@@ -36,8 +36,8 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <div className="container-x py-20 text-center">
-        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Product not found</h1>
-        <p className="mt-2 text-slate-500">The product you're looking for doesn't exist.</p>
+        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Produk tidak ditemukan</h1>
+        <p className="mt-2 text-slate-500">Produk yang Anda cari tidak tersedia.</p>
         <Link to="/products" className="btn-primary mt-6">Browse Products</Link>
       </div>
     );
@@ -130,7 +130,7 @@ export default function ProductDetailPage() {
                 {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Best Seller</span>}
               </div>
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 opacity-0 group-hover:opacity-100 transition">
-                <ZoomIn className="h-3.5 w-3.5" /> Hover to zoom
+                <ZoomIn className="h-3.5 w-3.5" /> Arahkan kursor untuk memperbesar
               </div>
             </div>
           </div>
@@ -159,14 +159,14 @@ export default function ProductDetailPage() {
               </>
             )}
           </div>
-          <p className="mt-1 text-xs text-slate-400">Flat shipping: Rp52.000. No additional automatic tax.</p>
+          <p className="mt-1 text-xs text-slate-400">Ongkos kirim tetap: Rp52.000. Tidak ada pajak tambahan otomatis.</p>
 
           <p className="mt-5 text-slate-600 dark:text-slate-300 leading-relaxed">{product.description}</p>
 
           {/* Colors */}
           {product.colors && product.colors.length > 0 && (
             <div className="mt-5">
-              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">Color: <span className="font-normal text-slate-500">{product.colors[selectedColor]}</span></p>
+              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">Warna: <span className="font-normal text-slate-500">{product.colors[selectedColor]}</span></p>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((color, i) => (
                   <button
@@ -193,7 +193,7 @@ export default function ProductDetailPage() {
               </button>
             </div>
             <button onClick={() => addToCart(product, quantity)} disabled={outOfStock} className="btn-primary flex-1 h-11">
-              <ShoppingCart className="h-5 w-5" /> Add to Cart
+              <ShoppingCart className="h-5 w-5" /> Tambah ke Keranjang
             </button>
             <button onClick={() => toggleWishlist(product)} className={`btn-outline h-11 !w-11 !px-0 ${inWishlist ? 'text-error-500 border-error-300 dark:border-error-800' : ''}`}>
               <Heart className={`h-5 w-5 ${inWishlist ? 'fill-error-500' : ''}`} />
@@ -203,7 +203,7 @@ export default function ProductDetailPage() {
             </button>
           </div>
           <button onClick={handleBuyNow} disabled={outOfStock} className="btn-accent w-full mt-3 h-11">
-            Buy Now
+            Beli Sekarang
           </button>
 
           {/* Trust badges */}
@@ -244,7 +244,7 @@ export default function ProductDetailPage() {
           {activeTab === 'description' && (
             <div className="animate-fade-in max-w-3xl">
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{product.description}</p>
-              <h4 className="mt-6 mb-3 font-semibold text-slate-800 dark:text-slate-100">Key Features</h4>
+              <h4 className="mt-6 mb-3 font-semibold text-slate-800 dark:text-slate-100">Fitur Utama</h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {product.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
@@ -311,7 +311,7 @@ export default function ProductDetailPage() {
                             <Rating rating={review.rating} />
                             {review.verified && (
                               <span className="flex items-center gap-0.5 text-xs text-success-600 dark:text-success-400">
-                                <Check className="h-3 w-3" /> Verified
+                                <Check className="h-3 w-3" /> Terverifikasi
                               </span>
                             )}
                           </div>
@@ -332,7 +332,7 @@ export default function ProductDetailPage() {
       {/* Related products */}
       {related.length > 0 && (
         <div className="mt-14">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6">You might also like</h2>
+          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6">Anda mungkin juga suka</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {related.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>
