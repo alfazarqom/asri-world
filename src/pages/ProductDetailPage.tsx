@@ -67,7 +67,7 @@ export default function ProductDetailPage() {
         await navigator.share({ title: product.name, url: window.location.href });
       } else {
         await navigator.clipboard.writeText(window.location.href);
-        showToast('Link copied to clipboard', 'success');
+        showToast('Tautan berhasil disalin', 'success');
       }
     } catch { /* ignore */ }
   };
@@ -144,7 +144,7 @@ export default function ProductDetailPage() {
           <div className="mt-3 flex items-center gap-4">
             <Rating rating={avgRating} size="md" showCount count={product.reviewCount} />
             <span className={`text-sm font-medium ${outOfStock ? 'text-error-500' : product.stock <= 10 ? 'text-warning-600 dark:text-warning-400' : 'text-success-600 dark:text-success-400'}`}>
-              {outOfStock ? 'Out of stock' : product.stock <= 10 ? `Only ${product.stock} left!` : 'In stock'}
+              {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left!` : 'Tersedia'}
             </span>
           </div>
 
@@ -209,9 +209,9 @@ export default function ProductDetailPage() {
           {/* Trust badges */}
           <div className="mt-6 grid grid-cols-3 gap-3">
             {[
-              { icon: Truck, text: 'Flat Shipping' },
-              { icon: RotateCcw, text: '30-Day Returns' },
-              { icon: ShieldCheck, text: '2-Year Warranty' },
+              { icon: Truck, text: 'Ongkos Kirim Tetap' },
+              { icon: RotateCcw, text: 'Pengembalian 30 Hari' },
+              { icon: ShieldCheck, text: 'Garansi 2 Tahun' },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 text-center">
                 <item.icon className="h-5 w-5 text-primary-600 dark:text-primary-400" />
