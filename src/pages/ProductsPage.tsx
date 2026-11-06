@@ -88,7 +88,7 @@ export default function ProdukPage() {
             onClick={() => setSearchParams({})}
             className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition ${!categoryParam ? 'bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400 font-medium' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
           >
-            All Kategori
+            Semua Kategori
           </button>
           {categories.map((cat) => (
             <button
@@ -157,7 +157,7 @@ export default function ProdukPage() {
     <div className="container-x py-6">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
-        <Link to="/" className="hover:text-primary-600">Home</Link>
+        <Link to="/" className="hover:text-primary-600">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <span className="text-slate-800 dark:text-slate-200 font-medium">{pageTitle}</span>
       </nav>
@@ -171,7 +171,7 @@ export default function ProdukPage() {
                 <SlidersHorizontal className="h-4 w-4" /> Filter
               </h3>
               {activeFilterCount > 0 && (
-                <button onClick={clearFilter} className="text-xs text-primary-600 hover:underline">Clear</button>
+                <button onClick={clearFilter} className="text-xs text-primary-600 hover:underline">Hapus</button>
               )}
             </div>
             <FilterContent />
@@ -209,7 +209,7 @@ export default function ProdukPage() {
               <PackageSearch className="h-16 w-16 text-slate-300 dark:text-slate-700 mb-4" />
               <h3 className="font-semibold text-lg text-slate-800 dark:text-slate-100">Produk tidak ditemukan</h3>
               <p className="text-sm text-slate-500 mt-1 max-w-sm">Coba sesuaikan filter atau kata kunci pencarian Anda.</p>
-              <button onClick={clearFilter} className="btn-primary mt-5">Clear Filter</button>
+              <button onClick={clearFilter} className="btn-primary mt-5">Hapus Filter</button>
             </div>
           )}
         </div>
