@@ -69,7 +69,7 @@ export default function OrdersPage() {
               </div>
               <div className="text-right">
                 <p className="text-xs text-slate-400">Total</p>
-                <p className="font-display text-lg font-bold text-slate-900 dark:text-white"">{displayAmount(order, order.total)}</p>
+                <p className="font-display text-lg font-bold text-slate-900 dark:text-white">{displayAmount(order, order.total)}</p>
               </div>
             </div>
 
@@ -83,7 +83,7 @@ export default function OrdersPage() {
                     <Link to={`/product/${item.product.id}`} className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate hover:text-primary-600 transition">{item.product.name}</Link>
                     <p className="text-xs text-slate-500">Qty: {item.quantity}</p>
                   </div>
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white"">{displayAmount(order, item.product.price * item.quantity)}</span>
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white">{displayAmount(order, item.product.price * item.quantity)}</span>
                 </div>
               ))}
             </div>
