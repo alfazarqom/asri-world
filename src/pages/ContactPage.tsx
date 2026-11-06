@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Mail, Telepon, MapPin, Send, MessageSquare, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../store/StoreContext';
 
-export default function ContactPage() {
+export default function KontakPage() {
   const { showToast } = useStore();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -11,12 +11,12 @@ export default function ContactPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email) e.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Invalid email';
-    if (!form.subject.trim()) e.subject = 'Subject is required';
-    if (!form.message.trim()) e.message = 'Message is required';
-    else if (form.message.trim().length < 10) e.message = 'Message must be at least 10 characters';
+    if (!form.name.trim()) e.name = 'Nama wajib diisi';
+    if (!form.email) e.email = 'Alamat email wajib diisi';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Alamat email tidak valid';
+    if (!form.subject.trim()) e.subject = 'Subjek wajib diisi';
+    if (!form.message.trim()) e.message = 'Pesan wajib diisi';
+    else if (form.message.trim().length < 10) e.message = 'Pesan harus terdiri dari minimal 10 karakter';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -28,7 +28,7 @@ export default function ContactPage() {
     setTimeout(() => {
       setLoading(false);
       setForm({ name: '', email: '', subject: '', message: '' });
-      showToast('Message sent! We\'ll get back to you soon.', 'success');
+      showToast('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
     }, 800);
   };
 
@@ -39,35 +39,35 @@ export default function ContactPage() {
 
   const contactInfo = [
     { icon: Mail, label: 'Email', value: 'support@digitalworld.com', href: 'mailto:support@digitalworld.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
-    { icon: MapPin, label: 'Address', value: '123 Tech Avenue, San Francisco, CA 94016', href: null },
-    { icon: Clock, label: 'Hours', value: 'Mon–Fri 9AM–6PM PST', href: null },
+    { icon: Telepon, label: 'Telepon', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
+    { icon: MapPin, label: 'Alamat', value: '123 Tech Avenue, San Francisco, CA 94016', href: null },
+    { icon: Clock, label: 'Jam Operasional', value: 'Senin–Jumat, 09.00–18.00 WIB', href: null },
   ];
 
   const faqs = [
-    { q: 'How long does shipping take?', a: 'Standard shipping takes 5-7 business days, while express shipping delivers in 2-3 business days.' },
-    { q: 'What is your return policy?', a: 'We offer a 30-day hassle-free return policy on all products. Items must be in original condition.' },
-    { q: 'Do you offer warranty?', a: 'Yes, all products come with a 2-year manufacturer warranty covering defects and malfunctions.' },
-    { q: 'How can I track my order?', a: 'Once your order ships, you\'ll receive a tracking link via email. You can also track it from your account.' },
+    { q: 'Berapa lama waktu pengiriman?', a: 'Pengiriman reguler membutuhkan 5–7 hari kerja, sedangkan pengiriman ekspres membutuhkan 2–3 hari kerja.' },
+    { q: 'Bagaimana kebijakan pengembalian barang?', a: 'Kami menyediakan kebijakan pengembalian barang selama 30 hari. Barang harus dalam kondisi asli.' },
+    { q: 'Apakah produk dilengkapi garansi?', a: 'Ya, semua produk dilengkapi garansi produsen selama 2 tahun yang mencakup cacat dan kerusakan fungsi.' },
+    { q: 'Bagaimana cara melacak pesanan?', a: 'Setelah pesanan dikirim, Anda akan menerima tautan pelacakan melalui email. Anda juga dapat melacak pesanan melalui akun Anda.' },
   ];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6">
-        <Link to="/" className="hover:text-primary-600">Home</Link>
+        <Link to="/" className="hover:text-primary-600">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">Contact</span>
+        <span className="text-slate-800 dark:text-slate-200 font-medium">Kontak</span>
       </nav>
 
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Get in touch</h1>
-        <p className="mt-2 text-slate-500 max-w-xl mx-auto">Have a question or need help? We're here for you. Reach out and we'll respond within 24 hours.</p>
+        <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Hubungi Kami</h1>
+        <p className="mt-2 text-slate-500 max-w-xl mx-auto">Punya pertanyaan atau membutuhkan bantuan? Hubungi kami dan kami akan merespons dalam 24 jam.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Contact info cards */}
+        {/* Kontak info cards */}
         <div className="space-y-4">
           {contactInfo.map((info, i) => (
             <div key={i} className="card p-5 hover:shadow-md transition-shadow">
@@ -88,38 +88,38 @@ export default function ContactPage() {
           ))}
         </div>
 
-        {/* Contact form */}
+        {/* Kontak form */}
         <div className="lg:col-span-2">
           <div className="card p-6 sm:p-8">
             <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-1 flex items-center gap-2">
-              <MessageSquare className="h-5 w-5 text-primary-600" /> Send us a message
+              <MessageSquare className="h-5 w-5 text-primary-600" /> Kirim Pesan kepada Kami
             </h2>
-            <p className="text-sm text-slate-500 mb-6">Fill out the form below and we'll get back to you as soon as possible.</p>
+            <p className="text-sm text-slate-500 mb-6">Isi formulir di bawah ini dan kami akan segera menghubungi Anda.</p>
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Name</label>
-                  <input value={form.name} onChange={(e) => update('name', e.target.value)} className={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Your name" />
+                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Nama</label>
+                  <input value={form.name} onChange={(e) => update('name', e.target.value)} className={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Nama Anda" />
                   {errors.name && <p className="mt-1 text-xs text-error-500">{errors.name}</p>}
                 </div>
                 <div>
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Email</label>
-                  <input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`input-field ${errors.email ? 'border-error-500' : ''}`} placeholder="you@example.com" />
+                  <input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`input-field ${errors.email ? 'border-error-500' : ''}`} placeholder="nama@email.com" />
                   {errors.email && <p className="mt-1 text-xs text-error-500">{errors.email}</p>}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subject</label>
-                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} className={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="What can we help with?" />
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subjek</label>
+                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} className={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="Apa yang bisa kami bantu?" />
                 {errors.subject && <p className="mt-1 text-xs text-error-500">{errors.subject}</p>}
               </div>
               <div>
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Message</label>
-                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} className={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Tell us more..." />
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Pesan</label>
+                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} className={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Ceritakan lebih lanjut..." />
                 {errors.message && <p className="mt-1 text-xs text-error-500">{errors.message}</p>}
               </div>
               <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-                {loading ? 'Sending...' : <><Send className="h-4 w-4" /> Send Message</>}
+                {loading ? 'Sedang mengirim...' : <><Send className="h-4 w-4" /> Kirim Pesan</>}
               </button>
             </form>
           </div>
@@ -128,7 +128,7 @@ export default function ContactPage() {
 
       {/* FAQ */}
       <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Frequently Asked Questions</h2>
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Pertanyaan yang Sering Diajukan</h2>
         <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="card overflow-hidden">
@@ -149,10 +149,10 @@ export default function ContactPage() {
 
       {/* Map placeholder */}
       <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Find Us</h2>
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Temukan Kami</h2>
         <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
           <iframe
-            title="DigitalWorld Location"
+            title="Lokasi DigitalWorld"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-122.45,37.74,-122.38,37.80&layer=mapnik&marker=37.7749,-122.4194"
             className="w-full h-[360px] border-0"
             loading="lazy"

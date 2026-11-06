@@ -8,28 +8,28 @@ import * as Icons from 'lucide-react';
 
 const slides = [
   {
-    title: 'Mega Tech Sale',
-    subtitle: 'Up to 40% off premium gadgets',
-    description: 'Shop the latest smartphones, laptops, and accessories at unbeatable prices.',
-    cta: 'Shop Deals',
+    title: 'Promo Teknologi Besar-besaran',
+    subtitle: 'Diskon hingga 40% untuk gadget premium',
+    description: 'Temukan ponsel pintar, laptop, dan aksesori terbaru dengan harga terbaik.',
+    cta: 'Lihat Promo',
     link: '/products?tag=deal',
     bg: 'from-primary-600 via-primary-700 to-primary-900',
     accent: 'from-accent-400/20 to-transparent',
   },
   {
-    title: 'New Arrivals Just Landed',
-    subtitle: 'Fresh tech for the new season',
-    description: 'Discover the newest devices that just hit our shelves — be the first to own them.',
-    cta: 'Explore New',
+    title: 'Produk Terbaru Telah Hadir',
+    subtitle: 'Teknologi terbaru untuk musim ini',
+    description: 'Temukan perangkat terbaru yang baru saja hadir dan jadilah yang pertama memilikinya.',
+    cta: 'Jelajahi Produk Baru',
     link: '/products?tag=new',
     bg: 'from-slate-800 via-slate-900 to-black',
     accent: 'from-primary-500/20 to-transparent',
   },
   {
-    title: 'Flash Sale — 24 Hours Only',
-    subtitle: 'Limited stock, unlimited savings',
-    description: 'Grab these lightning deals before they\'re gone. Prices drop every hour.',
-    cta: 'Catch the Flash',
+    title: 'Promo Kilat — Hanya 24 Jam',
+    subtitle: 'Stok terbatas, hemat lebih banyak',
+    description: 'Segera manfaatkan promo kilat ini sebelum berakhir. Harga turun setiap jam.',
+    cta: 'Serbu Promo Kilat',
     link: '/products?tag=flash',
     bg: 'from-accent-600 via-accent-700 to-accent-900',
     accent: 'from-warning-400/20 to-transparent',
@@ -86,10 +86,10 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      <button onClick={prev} className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Previous slide">
+      <button onClick={prev} className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Slide sebelumnya">
         <ChevronLeft className="h-5 w-5" />
       </button>
-      <button onClick={next} className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Next slide">
+      <button onClick={next} className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Slide berikutnya">
         <ChevronRight className="h-5 w-5" />
       </button>
 
@@ -99,7 +99,7 @@ export default function HeroCarousel() {
             key={i}
             onClick={() => goTo(i)}
             className={`h-2 rounded-full transition-all ${i === current ? 'w-8 bg-white' : 'w-2 bg-white/40 hover:bg-white/60'}`}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Buka slide ${i + 1}`}
           />
         ))}
       </div>

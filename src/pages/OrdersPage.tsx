@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Package, ChevronRight, ShoppingBag, Calendar, MapPin } from 'lucide-react';
+import { formatIDR, toIDR } from '../utils/currency';
 
 interface StoredOrder {
   id: string;
   date: string;
   items: { product: { id: string; name: string; images: string[]; price: number }; quantity: number }[];
   total: number;
-  shipping: { name: string; address: string; city: string; state: string; zip: string };
+  currency?: 'IDR';
+  shipping: { name: string; address: string; city: string; state: string; province?: string; district?: string; village?: string; zip: string; country?: string };
 }
 
 export default function OrdersPage() {
@@ -21,6 +23,8 @@ export default function OrdersPage() {
     }
   }, []);
 
+  const displayAmount = (order: StoredOrder, amount: number) => formatIDR(order.currency === 'IDR' ? amount : toIDR(amount));
+
   if (orders.length === 0) {
     return (
       <div className="container-x py-16">
@@ -28,10 +32,10 @@ export default function OrdersPage() {
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 mb-6">
             <Package className="h-12 w-12 text-slate-400" />
           </div>
-          <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">No orders yet</h1>
-          <p className="mt-2 text-slate-500 max-w-md">When you place an order, it will appear here so you can track it anytime.</p>
+          <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Belum ada pesanan</h1>
+          <p className="mt-2 text-slate-500 max-w-md">Pesanan Anda akan muncul di sini setelah dibuat, sehingga dapat dilacak kapan saja.</p>
           <Link to="/products" className="btn-primary mt-6 group">
-            <ShoppingBag className="h-5 w-5" /> Start Shopping
+            <ShoppingBag className="h-5 w-5" /> Mulai Belanja
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -42,12 +46,12 @@ export default function OrdersPage() {
   return (
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
-        <Link to="/" className="hover:text-primary-600">Home</Link>
+        <Link to="/" className="hover:text-primary-600">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">My Orders</span>
+        <span className="text-slate-800 dark:text-slate-200 font-medium">Pesanan Saya</span>
       </nav>
 
-      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-6">My Orders ({orders.length})</h1>
+      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-6">Pesanan Saya ({orders.length})</h1>
 
       <div className="space-y-4">
         {orders.map((order) => (
@@ -56,16 +60,16 @@ export default function OrdersPage() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-display font-bold text-slate-900 dark:text-white">{order.id}</span>
-                  <span className="badge bg-success-100 text-success-700 dark:bg-success-950 dark:text-success-400">Confirmed</span>
+                  <span className="badge bg-success-100 text-success-700 dark:bg-success-950 dark:text-success-400">Dikonfirmasi</span>
                 </div>
                 <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
-                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {new Date(order.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                  <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {order.shipping.city}, {order.shipping.state}</span>
+                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {new Date(order.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                  <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {order.shipping.city}, {order.shipping.province || order.shipping.state}</span>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-xs text-slate-400">Total</p>
-                <p className="font-display text-lg font-bold text-slate-900 dark:text-white">${order.total.toFixed(2)}</p>
+                <p className="font-display text-lg font-bold text-slate-900 dark:text-white">{displayAmount(order, order.total)}</p>
               </div>
             </div>
 
@@ -79,7 +83,7 @@ export default function OrdersPage() {
                     <Link to={`/product/${item.product.id}`} className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate hover:text-primary-600 transition">{item.product.name}</Link>
                     <p className="text-xs text-slate-500">Qty: {item.quantity}</p>
                   </div>
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white">${(item.product.price * item.quantity).toFixed(2)}</span>
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white">{displayAmount(order, item.product.price * item.quantity)}</span>
                 </div>
               ))}
             </div>

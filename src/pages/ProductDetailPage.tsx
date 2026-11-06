@@ -8,6 +8,7 @@ import { getProductById, products } from '../data/products';
 import { useStore } from '../store/StoreContext';
 import Rating from '../components/Rating';
 import ProductCard from '../components/ProductCard';
+import { formatIDR, toIDR } from '../utils/currency';
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -35,9 +36,9 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <div className="container-x py-20 text-center">
-        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Product not found</h1>
-        <p className="mt-2 text-slate-500">The product you're looking for doesn't exist.</p>
-        <Link to="/products" className="btn-primary mt-6">Browse Products</Link>
+        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Produk tidak ditemukan</h1>
+        <p className="mt-2 text-slate-500">Produk yang Anda cari tidak tersedia.</p>
+        <Link to="/products" className="btn-primary mt-6">Jelajahi Produk</Link>
       </div>
     );
   }
@@ -66,7 +67,7 @@ export default function ProductDetailPage() {
         await navigator.share({ title: product.name, url: window.location.href });
       } else {
         await navigator.clipboard.writeText(window.location.href);
-        showToast('Link copied to clipboard', 'success');
+        showToast('Tautan berhasil disalin', 'success');
       }
     } catch { /* ignore */ }
   };
@@ -85,7 +86,7 @@ export default function ProductDetailPage() {
     <div className="container-x py-6">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6 overflow-hidden">
-        <Link to="/" className="hover:text-primary-600 shrink-0">Home</Link>
+        <Link to="/" className="hover:text-primary-600 shrink-0">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5 shrink-0" />
         <Link to={`/products?category=${product.category}`} className="hover:text-primary-600 capitalize shrink-0">{product.category}</Link>
         <ChevronRight className="h-3.5 w-3.5 shrink-0" />
@@ -125,11 +126,11 @@ export default function ProductDetailPage() {
               />
               <div className="absolute top-4 left-4 flex flex-col gap-1.5">
                 {discount > 0 && <span className="badge bg-error-500 text-white">-{discount}% OFF</span>}
-                {product.tags.includes('new') && <span className="badge bg-primary-600 text-white">New</span>}
-                {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Best Seller</span>}
+                {product.tags.includes('new') && <span className="badge bg-primary-600 text-white">Baru</span>}
+                {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Terlaris</span>}
               </div>
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 opacity-0 group-hover:opacity-100 transition">
-                <ZoomIn className="h-3.5 w-3.5" /> Hover to zoom
+                <ZoomIn className="h-3.5 w-3.5" /> Arahkan kursor untuk memperbesar
               </div>
             </div>
           </div>
@@ -143,29 +144,29 @@ export default function ProductDetailPage() {
           <div className="mt-3 flex items-center gap-4">
             <Rating rating={avgRating} size="md" showCount count={product.reviewCount} />
             <span className={`text-sm font-medium ${outOfStock ? 'text-error-500' : product.stock <= 10 ? 'text-warning-600 dark:text-warning-400' : 'text-success-600 dark:text-success-400'}`}>
-              {outOfStock ? 'Out of stock' : product.stock <= 10 ? `Only ${product.stock} left!` : 'In stock'}
+              {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left!` : 'Tersedia'}
             </span>
           </div>
 
           <div className="mt-5 flex items-end gap-3">
-            <span className="text-3xl font-bold text-slate-900 dark:text-white">${product.price}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(product.price))}</span>
             {product.originalPrice > product.price && (
               <>
-                <span className="text-lg text-slate-400 line-through">${product.originalPrice}</span>
+                <span className="text-lg text-slate-400 line-through">{formatIDR(toIDR(product.originalPrice))}</span>
                 <span className="badge bg-success-100 text-success-700 dark:bg-success-950 dark:text-success-400">
-                  Save ${product.originalPrice - product.price}
+                  Save {formatIDR(toIDR(product.originalPrice) - toIDR(product.price))}
                 </span>
               </>
             )}
           </div>
-          <p className="mt-1 text-xs text-slate-400">Tax included. Free shipping calculated at checkout.</p>
+          <p className="mt-1 text-xs text-slate-400">Ongkos kirim tetap: Rp52.000. Tidak ada pajak tambahan otomatis.</p>
 
           <p className="mt-5 text-slate-600 dark:text-slate-300 leading-relaxed">{product.description}</p>
 
           {/* Colors */}
           {product.colors && product.colors.length > 0 && (
             <div className="mt-5">
-              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">Color: <span className="font-normal text-slate-500">{product.colors[selectedColor]}</span></p>
+              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">Warna: <span className="font-normal text-slate-500">{product.colors[selectedColor]}</span></p>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((color, i) => (
                   <button
@@ -192,7 +193,7 @@ export default function ProductDetailPage() {
               </button>
             </div>
             <button onClick={() => addToCart(product, quantity)} disabled={outOfStock} className="btn-primary flex-1 h-11">
-              <ShoppingCart className="h-5 w-5" /> Add to Cart
+              <ShoppingCart className="h-5 w-5" /> Tambah ke Keranjang
             </button>
             <button onClick={() => toggleWishlist(product)} className={`btn-outline h-11 !w-11 !px-0 ${inWishlist ? 'text-error-500 border-error-300 dark:border-error-800' : ''}`}>
               <Heart className={`h-5 w-5 ${inWishlist ? 'fill-error-500' : ''}`} />
@@ -202,15 +203,15 @@ export default function ProductDetailPage() {
             </button>
           </div>
           <button onClick={handleBuyNow} disabled={outOfStock} className="btn-accent w-full mt-3 h-11">
-            Buy Now
+            Beli Sekarang
           </button>
 
           {/* Trust badges */}
           <div className="mt-6 grid grid-cols-3 gap-3">
             {[
-              { icon: Truck, text: 'Free Shipping' },
-              { icon: RotateCcw, text: '30-Day Returns' },
-              { icon: ShieldCheck, text: '2-Year Warranty' },
+              { icon: Truck, text: 'Ongkos Kirim Tetap' },
+              { icon: RotateCcw, text: 'Pengembalian 30 Hari' },
+              { icon: ShieldCheck, text: 'Garansi 2 Tahun' },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 text-center">
                 <item.icon className="h-5 w-5 text-primary-600 dark:text-primary-400" />
@@ -225,9 +226,9 @@ export default function ProductDetailPage() {
       <div className="mt-12">
         <div className="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar">
           {([
-            { key: 'description', label: 'Description' },
-            { key: 'specs', label: 'Specifications' },
-            { key: 'reviews', label: `Reviews (${product.reviews.length})` },
+            { key: 'description', label: 'Deskripsi' },
+            { key: 'specs', label: 'Spesifikasi' },
+            { key: 'reviews', label: `Ulasan (${product.reviews.length})` },
           ] as const).map((tab) => (
             <button
               key={tab.key}
@@ -243,7 +244,7 @@ export default function ProductDetailPage() {
           {activeTab === 'description' && (
             <div className="animate-fade-in max-w-3xl">
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{product.description}</p>
-              <h4 className="mt-6 mb-3 font-semibold text-slate-800 dark:text-slate-100">Key Features</h4>
+              <h4 className="mt-6 mb-3 font-semibold text-slate-800 dark:text-slate-100">Fitur Utama</h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {product.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
@@ -310,13 +311,13 @@ export default function ProductDetailPage() {
                             <Rating rating={review.rating} />
                             {review.verified && (
                               <span className="flex items-center gap-0.5 text-xs text-success-600 dark:text-success-400">
-                                <Check className="h-3 w-3" /> Verified
+                                <Check className="h-3 w-3" /> Terverifikasi
                               </span>
                             )}
                           </div>
                         </div>
                       </div>
-                      <span className="text-xs text-slate-400">{review.date}</span>
+                      <span className="text-xs text-slate-400">{new Date(review.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                     </div>
                     <h5 className="mt-3 font-semibold text-sm text-slate-800 dark:text-slate-100">{review.title}</h5>
                     <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{review.comment}</p>
@@ -331,7 +332,7 @@ export default function ProductDetailPage() {
       {/* Related products */}
       {related.length > 0 && (
         <div className="mt-14">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6">You might also like</h2>
+          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6">Anda mungkin juga suka</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {related.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>

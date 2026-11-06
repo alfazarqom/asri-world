@@ -3,6 +3,7 @@ import { Heart, ShoppingCart, Eye } from 'lucide-react';
 import type { Product } from '../types';
 import { useStore } from '../store/StoreContext';
 import Rating from './Rating';
+import { formatIDR, toIDR } from '../utils/currency';
 
 interface ProductCardProps {
   product: Product;
@@ -21,13 +22,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="badge bg-error-500 text-white">-{discount}%</span>
         )}
         {product.tags.includes('new') && (
-          <span className="badge bg-primary-600 text-white">New</span>
+          <span className="badge bg-primary-600 text-white">Baru</span>
         )}
         {product.tags.includes('bestseller') && (
-          <span className="badge bg-accent-500 text-white">Best Seller</span>
+          <span className="badge bg-accent-500 text-white">Terlaris</span>
         )}
         {product.tags.includes('flash') && (
-          <span className="badge bg-warning-500 text-slate-900">Flash</span>
+          <span className="badge bg-warning-500 text-slate-900">Promo Kilat</span>
         )}
       </div>
 
@@ -38,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             ? 'bg-error-500 text-white shadow-md'
             : 'bg-white/80 dark:bg-slate-900/80 text-slate-500 hover:text-error-500 backdrop-blur opacity-0 group-hover:opacity-100'
         }`}
-        aria-label="Toggle wishlist"
+        aria-label="Tambahkan ke favorit"
       >
         <Heart className={`h-4.5 w-4.5 ${inWishlist ? 'fill-white' : ''}`} />
       </button>
@@ -73,20 +74,20 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Rating rating={product.rating} count={product.reviewCount} showCount />
         </div>
         <div className="mt-2 flex items-center gap-2">
-          <span className="text-lg font-bold text-slate-900 dark:text-white">${product.price}</span>
+          <span className="text-lg font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(product.price))}</span>
           {product.originalPrice > product.price && (
-            <span className="text-sm text-slate-400 line-through">${product.originalPrice}</span>
+            <span className="text-sm text-slate-400 line-through">{formatIDR(toIDR(product.originalPrice))}</span>
           )}
         </div>
         <p className={`mt-1.5 text-xs font-medium ${product.stock > 10 ? 'text-success-600 dark:text-success-400' : product.stock > 0 ? 'text-warning-600 dark:text-warning-400' : 'text-error-500'}`}>
-          {outOfStock ? 'Out of stock' : product.stock <= 10 ? `Only ${product.stock} left` : 'In stock'}
+          {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left` : 'Tersedia'}
         </p>
         <button
           onClick={() => addToCart(product)}
           disabled={outOfStock}
           className="btn-primary mt-3 w-full text-sm"
         >
-          <ShoppingCart className="h-4 w-4" /> Add to Cart
+          <ShoppingCart className="h-4 w-4" /> Add to Keranjang
         </button>
       </div>
     </div>
