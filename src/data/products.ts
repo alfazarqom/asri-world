@@ -25,7 +25,7 @@ export const products: Product[] = [
       'https://images.pexels.com/photos/14979013/pexels-photo-14979013.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       'https://images.pexels.com/photos/947407/pexels-photo-947407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     ],
-    description: 'iPhone 16 Pro Max menghadirkan kemampuan smartphone ke tingkat yang lebih tinggi. Dilengkapi chip A18 Pro, layar Super Retina XDR 6,9 inci dengan ProMotion, sistem tiga kamera 48 MP dengan Kontrol Kamera, serta desain titanium. Inilah iPhone paling bertenaga.',
+    description: 'iPhone 16 Pro Max menghadirkan kemampuan ponsel pintar ke tingkat yang lebih tinggi. Dilengkapi chip A18 Pro, layar Super Retina XDR 6,9 inci dengan ProMotion, sistem tiga kamera 48 MP dengan Kontrol Kamera, serta desain titanium. Inilah iPhone paling bertenaga.',
     features: ['Layar Super Retina XDR ProMotion 6,9 inci', 'Sistem Tiga Kamera 48 MP', 'Chip A18 Pro', 'Pemutaran Video hingga 33 Jam', 'Konektivitas 5G', 'Penyimpanan 256 GB', 'Desain Titanium', 'USB-C dengan USB 3'],
     specs: [
       { label: 'Layar', value: '6.9" OLED 120Hz ProMotion' },
@@ -244,7 +244,7 @@ export const products: Product[] = [
       'https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       'https://images.pexels.com/photos/11677077/pexels-photo-11677077.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     ],
-    description: 'The ultimate adventure companion. Apple Watch Ultra 2 features a titanium case, dual-frequency GPS, 100m water resistance, and a bright 3000-nit always-on display yang tetap terbaca di bawah sinar matahari langsung.',
+    description: 'Teman terbaik untuk petualangan. Apple Watch Ultra 2 dilengkapi casing titanium, GPS frekuensi ganda, ketahanan air hingga 100 meter, dan layar selalu aktif dengan kecerahan 3.000 nit yang tetap terbaca di bawah sinar matahari langsung.',
     features: ['Casing Titanium', 'GPS Frekuensi Ganda', 'Tahan Air hingga 100 Meter', '3000-nit Layar Selalu Aktif', 'Baterai hingga 72 Jam (Mode Daya Rendah)', 'EKG + Oksigen Darah'],
     specs: [
       { label: 'Casing', value: '49mm Titanium' },
