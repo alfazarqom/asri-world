@@ -140,7 +140,7 @@ export default function SignupPage() {
 
             <label className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300 cursor-pointer">
               <input type="checkbox" checked={agree} onChange={(e) => { setAgree(e.target.checked); setErrors((p) => ({ ...p, agree: undefined })); }} className="h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500/30 mt-0.5" />
-              <span>Saya menyetujui <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Ketentuan Layanan</a> and <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Kebijakan Privasi</a></span>
+              <span>Saya menyetujui <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Ketentuan Layanan</a> dan <a href="#" className="text-primary-600 dark:text-primary-400 hover:underline">Kebijakan Privasi</a></span>
             </label>
             {errors.agree && <p className="text-xs text-error-500 -mt-2">{errors.agree}</p>}
 
