@@ -149,10 +149,10 @@ export default function ProductDetailPage() {
           </div>
 
           <div className="mt-5 flex items-end gap-3">
-            <span className="text-3xl font-bold text-slate-900 dark:text-white"">{formatIDR(toIDR(product.price))}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(product.price))}</span>
             {product.originalPrice > product.price && (
               <>
-                <span className="text-lg text-slate-400 line-through"">{formatIDR(toIDR(product.originalPrice))}</span>
+                <span className="text-lg text-slate-400 line-through">{formatIDR(toIDR(product.originalPrice))}</span>
                 <span className="badge bg-success-100 text-success-700 dark:bg-success-950 dark:text-success-400">
                   Save {formatIDR(toIDR(product.originalPrice) - toIDR(product.price))}
                 </span>
