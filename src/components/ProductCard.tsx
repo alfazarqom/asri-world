@@ -74,9 +74,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Rating rating={product.rating} count={product.reviewCount} showCount />
         </div>
         <div className="mt-2 flex items-center gap-2">
-          <span className="text-lg font-bold text-slate-900 dark:text-white"">{formatIDR(toIDR(product.price))}</span>
+          <span className="text-lg font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(product.price))}</span>
           {product.originalPrice > product.price && (
-            <span className="text-sm text-slate-400 line-through"">{formatIDR(toIDR(product.originalPrice))}</span>
+            <span className="text-sm text-slate-400 line-through">{formatIDR(toIDR(product.originalPrice))}</span>
           )}
         </div>
         <p className={`mt-1.5 text-xs font-medium ${product.stock > 10 ? 'text-success-600 dark:text-success-400' : product.stock > 0 ? 'text-warning-600 dark:text-warning-400' : 'text-error-500'}`}>
