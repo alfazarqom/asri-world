@@ -63,7 +63,7 @@ export default function OrdersPage() {
                   <span className="badge bg-success-100 text-success-700 dark:bg-success-950 dark:text-success-400">Dikonfirmasi</span>
                 </div>
                 <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
-                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {new Date(order.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {new Date(order.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {order.shipping.city}, {order.shipping.province || order.shipping.state}</span>
                 </div>
               </div>
