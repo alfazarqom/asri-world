@@ -37,8 +37,8 @@ export default function OrderConfirmationPage() {
     showToast('ID Pesanan berhasil disalin', 'success');
   };
 
-  const orderDate = new Date(order.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  const estimatedDelivery = new Date(Date.now() + 5 * 86400000).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  const orderDate = new Date(order.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+  const estimatedDelivery = new Date(Date.now() + 5 * 86400000).toLocaleDateString('id-ID', { month: 'long', day: 'numeric' });
 
   return (
     <div className="container-x py-10">
