@@ -34,7 +34,7 @@ export default function OrderConfirmationPage() {
 
   const copyOrderId = () => {
     navigator.clipboard.writeText(order.id);
-    showToast('Order ID copied', 'success');
+    showToast('ID Pesanan berhasil disalin', 'success');
   };
 
   const orderDate = new Date(order.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -59,7 +59,7 @@ export default function OrderConfirmationPage() {
               <p className="text-xs text-slate-400 uppercase font-semibold">Order Number</p>
               <div className="flex items-center gap-2 mt-1">
                 <p className="font-display text-lg font-bold text-slate-900 dark:text-white">{order.id}</p>
-                <button onClick={copyOrderId} className="text-slate-400 hover:text-primary-600 transition" aria-label="Copy order ID">
+                <button onClick={copyOrderId} className="text-slate-400 hover:text-primary-600 transition" aria-label="Salin ID Pesanan">
                   <Copy className="h-4 w-4" />
                 </button>
               </div>
@@ -76,10 +76,10 @@ export default function OrderConfirmationPage() {
           <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Order Status</h2>
           <div className="flex items-center justify-between">
             {[
-              { icon: CheckCircle2, label: 'Confirmed', active: true },
-              { icon: Package, label: 'Processing', active: false },
-              { icon: Truck, label: 'Shipped', active: false },
-              { icon: HomeIcon, label: 'Delivered', active: false },
+              { icon: CheckCircle2, label: 'Dikonfirmasi', active: true },
+              { icon: Package, label: 'Diproses', active: false },
+              { icon: Truck, label: 'Dikirim', active: false },
+              { icon: HomeIcon, label: 'Terkirim', active: false },
             ].map((step, i) => (
               <div key={i} className="flex flex-1 flex-col items-center relative">
                 {i > 0 && <div className="absolute left-0 top-5 right-1/2 h-0.5 bg-slate-200 dark:bg-slate-700" />}
