@@ -83,7 +83,7 @@ export default function CheckoutPage() {
     if (currentStep === 1) {
       if (!form.firstName.trim()) nextErrors.firstName = 'Wajib diisi';
       if (!form.lastName.trim()) nextErrors.lastName = 'Wajib diisi';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) nextErrors.email = 'Email tidak valid';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) nextErrors.email = 'Alamat Email tidak valid';
       const phone = form.phone.replace(/[\s()-]/g, '');
       if (!/^(?:\+62|62|0)8[1-9][0-9]{6,11}$/.test(phone)) nextErrors.phone = 'Gunakan nomor ponsel Indonesia, contoh 081234567890';
       if (!form.address.trim()) nextErrors.address = 'Wajib diisi';
@@ -140,7 +140,7 @@ export default function CheckoutPage() {
     </div></div>;
   }
 
-  const steps = ['Ongkos Kirim', 'Delivery', 'Payment'];
+  const steps = ['Ongkos Kirim', 'Pengiriman', 'Pembayaran'];
   const selectClass = 'input-field cursor-pointer';
   const fieldClass = (field: string) => `input-field ${errors[field] ? 'border-error-500' : ''}`;
 
@@ -170,7 +170,7 @@ export default function CheckoutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div><label className="text-sm font-medium block mb-1.5">Nama Depan</label><input value={form.firstName} onChange={(e) => update('firstName', e.target.value)} className={fieldClass('firstName')} placeholder="Nama depan" />{errors.firstName && <p className="mt-1 text-xs text-error-500">{errors.firstName}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Nama Belakang</label><input value={form.lastName} onChange={(e) => update('lastName', e.target.value)} className={fieldClass('lastName')} placeholder="Nama belakang" />{errors.lastName && <p className="mt-1 text-xs text-error-500">{errors.lastName}</p>}</div>
-              <div><label className="text-sm font-medium block mb-1.5">Email</label><div className="relative"><Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" /><input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`${fieldClass('email')} pl-11`} placeholder="nama@email.com" /></div>{errors.email && <p className="mt-1 text-xs text-error-500">{errors.email}</p>}</div>
+              <div><label className="text-sm font-medium block mb-1.5">Alamat Email</label><div className="relative"><Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" /><input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`${fieldClass('email')} pl-11`} placeholder="nama@email.com" /></div>{errors.email && <p className="mt-1 text-xs text-error-500">{errors.email}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Nomor WhatsApp / Telepon</label><div className="relative"><Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" /><input value={form.phone} onChange={(e) => update('phone', e.target.value)} className={`${fieldClass('phone')} pl-11`} placeholder="081234567890" inputMode="tel" /></div>{errors.phone && <p className="mt-1 text-xs text-error-500">{errors.phone}</p>}</div>
               <div className="sm:col-span-2"><label className="text-sm font-medium block mb-1.5">Alamat Jalan, Nomor Rumah, RT/RW, Patokan</label><input value={form.address} onChange={(e) => update('address', e.target.value)} className={fieldClass('address')} placeholder="Nama jalan, nomor rumah, RT/RW, dan detail alamat" />{errors.address && <p className="mt-1 text-xs text-error-500">{errors.address}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Provinsi</label><select value={provinceId} onChange={(e) => { const selected = provinces.find((item) => item.id === e.target.value); setProvinceId(e.target.value); setCityId(''); setDistrictId(''); setForm((p) => ({ ...p, province: selected?.name || '', city: '', district: '', village: '' })); setCities([]); setDistricts([]); setVillages([]); setRegionError(''); }} className={selectClass}><option value="">Pilih provinsi</option>{provinces.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select>{errors.province && <p className="mt-1 text-xs text-error-500">{errors.province}</p>}</div>
