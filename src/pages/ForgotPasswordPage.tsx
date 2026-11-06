@@ -61,7 +61,7 @@ export default function ForgotPasswordPage() {
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); setError(''); }}
                     className={`input-field pl-11 ${error ? 'border-error-500' : ''}`}
-                    placeholder="you@example.com"
+                    placeholder="nama@email.com"
                   />
                 </div>
                 {error && <p className="mt-1.5 text-xs text-error-500">{error}</p>}
