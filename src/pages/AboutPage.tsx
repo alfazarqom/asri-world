@@ -78,7 +78,7 @@ export default function Tentang KamiPage() {
             </div>
             <h2 className="font-display text-xl font-bold text-slate-900 dark:text-white">Visi Kami</h2>
             <p className="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
-              To become the world's most trusted technology marketplace — where innovation meets affordability, and every customer feels confident in their purchase. We're building a future where great tech is just a click away.
+              Menjadi marketplace teknologi paling tepercaya, tempat inovasi berpadu dengan harga terjangkau dan setiap pelanggan merasa yakin dalam berbelanja. Kami membangun masa depan agar teknologi terbaik dapat diakses hanya dengan satu klik.
             </p>
           </div>
         </div>
