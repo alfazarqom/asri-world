@@ -9,7 +9,7 @@ interface Region { id: string; name: string }
 const REGION_API = 'https://www.emsifa.com/api-wilayah-indonesia/api';
 
 export default function CheckoutPage() {
-  const { cart, clearCart, user } = useStore();
+  const { cart, clearKeranjang, user } = useStore();
   const navigate = useNavigate();
   const location = useLocation();
   const [step, setStep] = useState(1);
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
     };
     const existing = JSON.parse(localStorage.getItem('dw_orders') || '[]');
     localStorage.setItem('dw_orders', JSON.stringify([orderData, ...existing]));
-    clearCart();
+    clearKeranjang();
     navigate('/order-confirmation', { state: { order: orderData } });
   };
 
@@ -148,7 +148,7 @@ export default function CheckoutPage() {
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
         <Link to="/" className="hover:text-primary-600">Beranda</Link><ChevronRight className="h-3.5 w-3.5" />
-        <Link to="/cart" className="hover:text-primary-600">Cart</Link><ChevronRight className="h-3.5 w-3.5" />
+        <Link to="/cart" className="hover:text-primary-600">Keranjang</Link><ChevronRight className="h-3.5 w-3.5" />
         <span className="text-slate-800 dark:text-slate-200 font-medium">Pembayaran</span>
       </nav>
       <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-6">Pembayaran</h1>
@@ -166,7 +166,7 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           {step === 1 && <div className="card p-6 animate-fade-in">
-            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><MapPin className="h-5 w-5 text-primary-600" /> Ongkos Kirim Details</h2>
+            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><MapPin className="h-5 w-5 text-primary-600" /> Detail Pengiriman</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div><label className="text-sm font-medium block mb-1.5">Nama Depan</label><input value={form.firstName} onChange={(e) => update('firstName', e.target.value)} className={fieldClass('firstName')} placeholder="Nama depan" />{errors.firstName && <p className="mt-1 text-xs text-error-500">{errors.firstName}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Nama Belakang</label><input value={form.lastName} onChange={(e) => update('lastName', e.target.value)} className={fieldClass('lastName')} placeholder="Nama belakang" />{errors.lastName && <p className="mt-1 text-xs text-error-500">{errors.lastName}</p>}</div>
@@ -195,13 +195,13 @@ export default function CheckoutPage() {
           </div>}
 
           {step === 3 && <div className="card p-6 animate-fade-in">
-            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><CreditCard className="h-5 w-5 text-primary-600" /> Payment Details</h2>
-            <div className="rounded-xl bg-primary-50 dark:bg-primary-950/30 p-3 mb-4 flex items-center gap-2 text-sm text-primary-700 dark:text-primary-400"><Lock className="h-4 w-4 shrink-0" /> This is a demo checkout. No real payment will be processed.</div>
+            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><CreditCard className="h-5 w-5 text-primary-600" /> Detail Pembayaran</h2>
+            <div className="rounded-xl bg-primary-50 dark:bg-primary-950/30 p-3 mb-4 flex items-center gap-2 text-sm text-primary-700 dark:text-primary-400"><Lock className="h-4 w-4 shrink-0" /> Ini adalah simulasi pembayaran. Tidak ada pembayaran sungguhan yang akan diproses.</div>
             <div className="space-y-4">
-              <div><label className="text-sm font-medium block mb-1.5">Card Number</label><input value={form.cardNumber} onChange={(e) => update('cardNumber', e.target.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim().slice(0, 19))} className={fieldClass('cardNumber')} placeholder="4242 4242 4242 4242" inputMode="numeric" />{errors.cardNumber && <p className="mt-1 text-xs text-error-500">{errors.cardNumber}</p>}</div>
-              <div><label className="text-sm font-medium block mb-1.5">Name on Card</label><input value={form.cardName} onChange={(e) => update('cardName', e.target.value)} className={fieldClass('cardName')} placeholder="Nama pada kartu" />{errors.cardName && <p className="mt-1 text-xs text-error-500">{errors.cardName}</p>}</div>
+              <div><label className="text-sm font-medium block mb-1.5">Nomor Kartu</label><input value={form.cardNumber} onChange={(e) => update('cardNumber', e.target.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim().slice(0, 19))} className={fieldClass('cardNumber')} placeholder="4242 4242 4242 4242" inputMode="numeric" />{errors.cardNumber && <p className="mt-1 text-xs text-error-500">{errors.cardNumber}</p>}</div>
+              <div><label className="text-sm font-medium block mb-1.5">Nama pada Kartu</label><input value={form.cardName} onChange={(e) => update('cardName', e.target.value)} className={fieldClass('cardName')} placeholder="Nama pada kartu" />{errors.cardName && <p className="mt-1 text-xs text-error-500">{errors.cardName}</p>}</div>
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="text-sm font-medium block mb-1.5">Expiry Date</label><input value={form.expiry} onChange={(e) => { let value = e.target.value.replace(/\D/g, ''); if (value.length >= 3) value = value.slice(0, 2) + '/' + value.slice(2, 4); update('expiry', value); }} className={fieldClass('expiry')} placeholder="MM/YY" maxLength={5} />{errors.expiry && <p className="mt-1 text-xs text-error-500">{errors.expiry}</p>}</div>
+                <div><label className="text-sm font-medium block mb-1.5">Tanggal Kedaluwarsa</label><input value={form.expiry} onChange={(e) => { let value = e.target.value.replace(/\D/g, ''); if (value.length >= 3) value = value.slice(0, 2) + '/' + value.slice(2, 4); update('expiry', value); }} className={fieldClass('expiry')} placeholder="MM/YY" maxLength={5} />{errors.expiry && <p className="mt-1 text-xs text-error-500">{errors.expiry}</p>}</div>
                 <div><label className="text-sm font-medium block mb-1.5">CVV</label><input value={form.cvv} onChange={(e) => update('cvv', e.target.value.replace(/\D/g, '').slice(0, 4))} className={fieldClass('cvv')} placeholder="123" inputMode="numeric" />{errors.cvv && <p className="mt-1 text-xs text-error-500">{errors.cvv}</p>}</div>
               </div>
             </div>
