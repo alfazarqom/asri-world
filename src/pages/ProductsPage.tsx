@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { SlidersHorizontal, X, Search, ChevronRight, PackageSearch } from 'lucide-react';
+import { SlidersHorizontal, X, ChevronRight, PackageSearch } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 import { categories } from '../data/categories';
