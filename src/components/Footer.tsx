@@ -90,7 +90,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5 text-slate-400">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary-400 shrink-0" />
-                <span>Indonesia</span>
+                <span>123 Tech Avenue, San Francisco, CA 94016</span>
               </li>
               <li className="flex items-center gap-2.5 text-slate-400">
                 <Phone className="h-4 w-4 text-primary-400 shrink-0" />
