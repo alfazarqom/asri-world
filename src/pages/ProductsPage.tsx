@@ -23,7 +23,7 @@ export default function ProductsPage() {
   const allMerek = useMemo(() => [...new Set(products.map((p) => p.brand))].sort(), []);
 
   const categoryInfo = categories.find((c) => c.slug === categoryParam);
-  const tagLabels: Record<string, string> = { deal: "Today's Deals", new: 'New Arrivals', bestseller: 'Best Sellers', flash: 'Flash Sale', featured: 'Featured' };
+  const tagLabels: Record<string, string> = { deal: 'Promo Hari Ini', new: 'Produk Terbaru', bestseller: 'Produk Terlaris', flash: 'Promo Kilat', featured: 'Unggulan' };
   const pageTitle = searchParam
     ? `Search: "${searchParam}"`
     : tagParam ? tagLabels[tagParam] || 'Products'
