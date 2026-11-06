@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Mail, Telepon, MapPin, Send, MessageSquare, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../store/StoreContext';
 
@@ -11,12 +11,12 @@ export default function ContactPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'Name is required';
+    if (!form.name.trim()) e.name = 'Nama wajib diisi';
     if (!form.email) e.email = 'Alamat email wajib diisi';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Invalid email';
-    if (!form.subject.trim()) e.subject = 'Subject is required';
-    if (!form.message.trim()) e.message = 'Message is required';
-    else if (form.message.trim().length < 10) e.message = 'Message must be at least 10 characters';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Alamat email tidak valid';
+    if (!form.subject.trim()) e.subject = 'Subjek wajib diisi';
+    if (!form.message.trim()) e.message = 'Pesan wajib diisi';
+    else if (form.message.trim().length < 10) e.message = 'Pesan harus terdiri dari minimal 10 karakter';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -39,16 +39,16 @@ export default function ContactPage() {
 
   const contactInfo = [
     { icon: Mail, label: 'Email', value: 'support@digitalworld.com', href: 'mailto:support@digitalworld.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
-    { icon: MapPin, label: 'Address', value: '123 Tech Avenue, San Francisco, CA 94016', href: null },
-    { icon: Clock, label: 'Hours', value: 'Mon–Fri 9AM–6PM PST', href: null },
+    { icon: Telepon, label: 'Telepon', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
+    { icon: MapPin, label: 'Alamat', value: '123 Tech Avenue, San Francisco, CA 94016', href: null },
+    { icon: Clock, label: 'Jam Operasional', value: 'Senin–Jumat, 09.00–18.00 WIB', href: null },
   ];
 
   const faqs = [
-    { q: 'How long does shipping take?', a: 'Standard shipping takes 5-7 business days, while express shipping delivers in 2-3 business days.' },
-    { q: 'What is your return policy?', a: 'We offer a 30-day hassle-free return policy on all products. Items must be in original condition.' },
-    { q: 'Do you offer warranty?', a: 'Yes, all products come with a 2-year manufacturer warranty covering defects and malfunctions.' },
-    { q: 'How can I track my order?', a: 'Once your order ships, you\'ll receive a tracking link via email. You can also track it from your account.' },
+    { q: 'Berapa lama waktu pengiriman?', a: 'Pengiriman reguler membutuhkan 5–7 hari kerja, sedangkan pengiriman ekspres membutuhkan 2–3 hari kerja.' },
+    { q: 'Bagaimana kebijakan pengembalian barang?', a: 'Kami menyediakan kebijakan pengembalian barang selama 30 hari. Barang harus dalam kondisi asli.' },
+    { q: 'Apakah produk dilengkapi garansi?', a: 'Ya, semua produk dilengkapi garansi produsen selama 2 tahun yang mencakup cacat dan kerusakan fungsi.' },
+    { q: 'Bagaimana cara melacak pesanan?', a: 'Once your order ships, you\'ll receive a tracking link via email. You can also track it from your account.' },
   ];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -152,7 +152,7 @@ export default function ContactPage() {
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Temukan Kami</h2>
         <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
           <iframe
-            title="DigitalWorld Location"
+            title="Lokasi DigitalWorld"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-122.45,37.74,-122.38,37.80&layer=mapnik&marker=37.7749,-122.4194"
             className="w-full h-[360px] border-0"
             loading="lazy"
