@@ -4,8 +4,8 @@ import { useStore } from '../store/StoreContext';
 import { formatIDR, toIDR } from '../utils/currency';
 import { getProductById } from '../data/products';
 
-export default function WishlistPage() {
-  const { wishlist, toggleWishlist, removeFromWishlist, addToCart } = useStore();
+export default function FavoritPage() {
+  const { wishlist, toggleFavorit, removeFromFavorit, addToCart } = useStore();
   const items = wishlist.map(getProductById).filter(Boolean) as NonNullable<ReturnType<typeof getProductById>>[];
 
   if (items.length === 0) {
@@ -15,10 +15,10 @@ export default function WishlistPage() {
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 mb-6">
             <Heart className="h-12 w-12 text-slate-400" />
           </div>
-          <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Your wishlist is empty</h1>
-          <p className="mt-2 text-slate-500 max-w-md">Save your favorite products here so you can easily find them later.</p>
+          <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Daftar favorit Anda masih kosong</h1>
+          <p className="mt-2 text-slate-500 max-w-md">Simpan produk favorit di sini agar mudah ditemukan kembali.</p>
           <Link to="/products" className="btn-primary mt-6 group">
-            Discover Products
+            Jelajahi Produk
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -29,14 +29,14 @@ export default function WishlistPage() {
   return (
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
-        <Link to="/" className="hover:text-primary-600">Home</Link>
+        <Link to="/" className="hover:text-primary-600">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">Wishlist</span>
+        <span className="text-slate-800 dark:text-slate-200 font-medium">Favorit</span>
       </nav>
 
       <div className="flex items-center justify-between mb-6">
         <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-          My Wishlist <span className="text-lg font-normal text-slate-400">({items.length})</span>
+          My Favorit <span className="text-lg font-normal text-slate-400">({items.length})</span>
         </h1>
       </div>
 
@@ -60,13 +60,13 @@ export default function WishlistPage() {
                 </div>
                 <div className="mt-3 flex items-center gap-2">
                   <button
-                    onClick={() => { addToCart(product); removeFromWishlist(product.id); }}
+                    onClick={() => { addToCart(product); removeFromFavorit(product.id); }}
                     disabled={product.stock === 0}
                     className="btn-primary flex-1 text-sm !py-2"
                   >
-                    <ShoppingCart className="h-4 w-4" /> Add to Cart
+                    <ShoppingCart className="h-4 w-4" /> Tambah ke Keranjang
                   </button>
-                  <button onClick={() => removeFromWishlist(product.id)} className="btn-outline !w-10 !h-10 !px-0 text-error-500 hover:!border-error-300" aria-label="Remove from wishlist">
+                  <button onClick={() => removeFromFavorit(product.id)} className="btn-outline !w-10 !h-10 !px-0 text-error-500 hover:!border-error-300" aria-label="Hapus dari daftar favorit">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
