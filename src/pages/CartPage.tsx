@@ -151,7 +151,7 @@ export default function CartPage() {
             </div>
 
             <button
-              onClick={() => navigate('/checkout')}
+              onClick={() => navigate('/checkout', { state: { discount } })}
               className="btn-primary w-full mt-5 group"
             >
               Proceed to Checkout
