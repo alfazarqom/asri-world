@@ -41,8 +41,8 @@ export default function LoginPage() {
               <Zap className="h-6 w-6" />
             </div>
           </Link>
-          <h1 className="mt-4 font-display text-2xl font-bold text-slate-900 dark:text-white">Welcome back</h1>
-          <p className="mt-1.5 text-sm text-slate-500">Sign in to your account to continue</p>
+          <h1 className="mt-4 font-display text-2xl font-bold text-slate-900 dark:text-white">Selamat datang kembali</h1>
+          <p className="mt-1.5 text-sm text-slate-500">Masuk ke akun Anda untuk melanjutkan</p>
         </div>
 
         <div className="card p-6 sm:p-8">
@@ -65,7 +65,7 @@ export default function LoginPage() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
-                <Link to="/forgot-password" className="text-xs font-medium text-primary-600 dark:text-primary-400 hover:underline">Forgot password?</Link>
+                <Link to="/forgot-password" className="text-xs font-medium text-primary-600 dark:text-primary-400 hover:underline">Lupa kata sandi?</Link>
               </div>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
@@ -89,7 +89,7 @@ export default function LoginPage() {
             </label>
 
             <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-              {loading ? 'Signing in...' : <>Sign In <ArrowRight className="h-4 w-4" /></>}
+              {loading ? 'Sedang masuk...' : <>Sign In <ArrowRight className="h-4 w-4" /></>}
             </button>
           </form>
 
@@ -100,14 +100,14 @@ export default function LoginPage() {
 
           <div className="grid grid-cols-2 gap-3">
             <button className="btn-outline !py-2.5 text-sm" onClick={() => { login('demo.user@digitalworld.com', 'Demo User'); navigate('/'); }}>
-              <span className="font-bold text-primary-600">D</span> Demo Login
+              <span className="font-bold text-primary-600">D</span> Masuk Demo
             </button>
             <Link to="/signup" className="btn-outline !py-2.5 text-sm">Create Account</Link>
           </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-slate-500">
-          Don't have an account? <Link to="/signup" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Sign up free</Link>
+          Don't have an account? <Link to="/signup" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Daftar gratis</Link>
         </p>
       </div>
     </div>
