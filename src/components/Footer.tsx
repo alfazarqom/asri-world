@@ -32,7 +32,7 @@ export default function Footer() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Masukkan alamat email Anda"
                 className="flex-1 rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 outline-none transition"
               />
               <button type="submit" className="btn-primary shrink-0">
@@ -77,8 +77,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/about" className="text-slate-400 hover:text-primary-400 transition">About Us</Link></li>
-              <li><Link to="/contact" className="text-slate-400 hover:text-primary-400 transition">Contact</Link></li>
+              <li><Link to="/about" className="text-slate-400 hover:text-primary-400 transition">Tentang Kami Us</Link></li>
+              <li><Link to="/contact" className="text-slate-400 hover:text-primary-400 transition">Kontak</Link></li>
               <li><Link to="/orders" className="text-slate-400 hover:text-primary-400 transition">Track Order</Link></li>
               <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Careers</a></li>
               <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Blog</a></li>
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-4">Contact</h4>
+            <h4 className="font-semibold text-white mb-4">Kontak</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5 text-slate-400">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary-400 shrink-0" />
