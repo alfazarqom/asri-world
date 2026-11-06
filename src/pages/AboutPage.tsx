@@ -14,7 +14,7 @@ export default function Tentang KamiPage() {
 
   const values = [
     { icon: ShieldCheck, title: 'Utamakan Kualitas', desc: 'Kami menguji setiap produk secara menyeluruh untuk memastikan kualitasnya memenuhi standar tinggi sebelum sampai kepada Anda.' },
-    { icon: Truck, title: 'Cepat & Andal', desc: 'Pengiriman gratis untuk pesanan di atas $50, dengan pilihan ekspres saat Anda membutuhkan pengiriman lebih cepat.' },
+    { icon: Truck, title: 'Cepat & Andal', desc: 'Ongkos kirim tetap Rp52.000 untuk setiap pesanan.' },
     { icon: HeadsetIcon, title: 'Selalu Siap Membantu', desc: 'Tim dukungan kami siap membantu menjawab pertanyaan dan menangani kendala Anda selama 24 jam setiap hari.' },
     { icon: RotateCcw, title: 'Pengembalian Mudah', desc: 'Kurang puas? Kembalikan produk dalam 30 hari untuk mendapatkan pengembalian dana penuh.' },
   ];
