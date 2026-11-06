@@ -67,9 +67,9 @@ export default function Navbar() {
 
   const navLinks = [
     { to: '/', label: 'Home', icon: Home },
-    { to: '/products', label: 'All Products', icon: LayoutGrid },
-    { to: '/about', label: 'About', icon: Info },
-    { to: '/contact', label: 'Contact', icon: Mail },
+    { to: '/products', label: 'Semua Produk', icon: LayoutGrid },
+    { to: '/about', label: 'Tentang Kami', icon: Info },
+    { to: '/contact', label: 'Kontak', icon: Mail },
   ];
 
   return (
@@ -152,18 +152,18 @@ export default function Navbar() {
 
             {/* Actions */}
             <div className="flex items-center gap-1.5 ml-auto">
-              <button onClick={toggleTheme} className="btn-ghost h-10 w-10 !p-0" aria-label="Toggle theme">
+              <button onClick={toggleTheme} className="btn-ghost h-10 w-10 !p-0" aria-label="Ganti tema">
                 {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               </button>
 
-              <Link to="/wishlist" className="btn-ghost h-10 w-10 !p-0 relative" aria-label="Wishlist">
+              <Link to="/wishlist" className="btn-ghost h-10 w-10 !p-0 relative" aria-label="Favorit">
                 <Heart className="h-5 w-5" />
                 {wishlist.length > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 flex h-4.5 min-w-[18px] items-center justify-center rounded-full bg-error-500 px-1 text-[10px] font-bold text-white">{wishlist.length}</span>
                 )}
               </Link>
 
-              <Link to="/cart" className="btn-ghost h-10 w-10 !p-0 relative" aria-label="Cart">
+              <Link to="/cart" className="btn-ghost h-10 w-10 !p-0 relative" aria-label="Keranjang">
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 flex h-4.5 min-w-[18px] items-center justify-center rounded-full bg-primary-600 px-1 text-[10px] font-bold text-white animate-scale-in">{cartCount}</span>
@@ -239,8 +239,8 @@ export default function Navbar() {
             </Link>
             <Link to="/products?tag=new" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">New Arrivals</Link>
             <Link to="/products?tag=bestseller" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Best Sellers</Link>
-            <Link to="/about" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">About</Link>
-            <Link to="/contact" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Contact</Link>
+            <Link to="/about" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Tentang Kami</Link>
+            <Link to="/contact" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Kontak</Link>
           </nav>
         </div>
 
