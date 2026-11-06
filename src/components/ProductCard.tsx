@@ -39,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             ? 'bg-error-500 text-white shadow-md'
             : 'bg-white/80 dark:bg-slate-900/80 text-slate-500 hover:text-error-500 backdrop-blur opacity-0 group-hover:opacity-100'
         }`}
-        aria-label="Toggle wishlist"
+        aria-label="Tambahkan ke favorit"
       >
         <Heart className={`h-4.5 w-4.5 ${inWishlist ? 'fill-white' : ''}`} />
       </button>
@@ -80,14 +80,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
         <p className={`mt-1.5 text-xs font-medium ${product.stock > 10 ? 'text-success-600 dark:text-success-400' : product.stock > 0 ? 'text-warning-600 dark:text-warning-400' : 'text-error-500'}`}>
-          {outOfStock ? 'Out of stock' : product.stock <= 10 ? `Only ${product.stock} left` : 'In stock'}
+          {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left` : 'Tersedia'}
         </p>
         <button
           onClick={() => addToCart(product)}
           disabled={outOfStock}
           className="btn-primary mt-3 w-full text-sm"
         >
-          <ShoppingCart className="h-4 w-4" /> Add to Cart
+          <ShoppingCart className="h-4 w-4" /> Add to Keranjang
         </button>
       </div>
     </div>
