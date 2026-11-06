@@ -8,6 +8,9 @@ interface OrderData {
   date: string;
   items: { product: { id: string; name: string; images: string[]; price: number }; quantity: number }[];
   total: number;
+  subtotal?: number;
+  discount?: number;
+  shippingCost?: number;
   currency?: 'IDR';
   shipping: { name: string; address: string; city: string; state: string; province?: string; district?: string; village?: string; zip: string; country?: string; phone?: string };
 }
@@ -104,6 +107,11 @@ export default function OrderConfirmationPage() {
                 <span className="font-semibold text-slate-900 dark:text-white">{displayAmount(item.product.price * item.quantity)}</span>
               </div>
             ))}
+          </div>
+          <div className="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-3 mt-3 text-sm">
+            {order.subtotal !== undefined && <div className="flex justify-between"><span>Subtotal</span><span>{displayAmount(order.subtotal)}</span></div>}
+            {(order.discount || 0) > 0 && <div className="flex justify-between text-success-600"><span>Diskon</span><span>-{displayAmount(order.discount || 0)}</span></div>}
+            {order.shippingCost !== undefined && <div className="flex justify-between"><span>Ongkos kirim</span><span>{displayAmount(order.shippingCost)}</span></div>}
           </div>
           <div className="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-3 mt-3">
             <span className="font-semibold text-slate-800 dark:text-slate-100">Total Paid</span>
