@@ -36,10 +36,10 @@ export default function HomePage() {
       <section className="container-x">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { icon: Truck, title: 'Flat Shipping', desc: 'Rp52.000 per order' },
-            { icon: RotateCcw, title: '30-Day Returns', desc: 'Hassle-free returns' },
-            { icon: ShieldCheck, title: '2-Year Warranty', desc: 'On all products' },
-            { icon: HeadsetIcon, title: '24/7 Support', desc: 'Always here to help' },
+            { icon: Truck, title: 'Flat Ongkos Kirim', desc: 'Rp52.000 per pesanan' },
+            { icon: RotateCcw, title: 'Pengembalian 30 Hari', desc: 'Proses pengembalian mudah' },
+            { icon: ShieldCheck, title: 'Garansi 2 Tahun', desc: 'Untuk semua produk' },
+            { icon: HeadsetIcon, title: 'Dukungan 24/7', desc: 'Siap membantu Anda' },
           ].map((badge, i) => (
             <div key={i} className="card flex items-center gap-3 p-4 hover:shadow-md transition-shadow">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400">
@@ -58,11 +58,11 @@ export default function HomePage() {
       <section className="container-x">
         <div className="flex items-end justify-between mb-6">
           <div>
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Shop by Category</h2>
-            <p className="mt-1 text-slate-500 dark:text-slate-400">Find exactly what you're looking for</p>
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Belanja Berdasarkan Kategori</h2>
+            <p className="mt-1 text-slate-500 dark:text-slate-400">Temukan produk yang Anda cari</p>
           </div>
           <Link to="/products" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
-            View All <ArrowRight className="h-4 w-4" />
+            Lihat Semua <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -87,7 +87,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Today's Deals */}
+      {/* Promo Hari Ini */}
       <section className="container-x">
         <div className="flex items-end justify-between mb-6">
           <div className="flex items-center gap-2.5">
@@ -95,12 +95,12 @@ export default function HomePage() {
               <Zap className="h-5 w-5 fill-error-500" />
             </div>
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Today's Deals</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Save big while stocks last</p>
+              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Promo Hari Ini</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Hemat lebih banyak selama persediaan masih ada</p>
             </div>
           </div>
           <Link to="/products?tag=deal" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
-            See All Deals <ArrowRight className="h-4 w-4" />
+            Lihat Semua Promo <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -115,7 +115,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <FlashSaleTimer />
               <Link to="/products?tag=flash" className="text-sm font-medium text-accent-600 dark:text-accent-400 hover:underline flex items-center gap-1">
-                View All <ArrowRight className="h-4 w-4" />
+                Lihat Semua <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -125,7 +125,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Featured Products */}
+      {/* Produk Unggulan */}
       <section className="container-x">
         <div className="flex items-end justify-between mb-6">
           <div className="flex items-center gap-2.5">
@@ -133,12 +133,12 @@ export default function HomePage() {
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Featured Products</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Handpicked just for you</p>
+              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Produk Unggulan</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Pilihan khusus untuk Anda</p>
             </div>
           </div>
           <Link to="/products" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
-            View All <ArrowRight className="h-4 w-4" />
+            Lihat Semua <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -154,17 +154,17 @@ export default function HomePage() {
           <div className="relative z-10 max-w-xl">
             <span className="badge bg-white/15 text-white backdrop-blur px-3 py-1">Limited Time</span>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl text-balance">
-              Get 20% off your first order
+              Dapatkan diskon 20% untuk pesanan pertama
             </h2>
-            <p className="mt-2 text-white/80">Use code <span className="font-mono font-bold text-accent-300">WELCOME20</span> at checkout. Valid for new customers only.</p>
+            <p className="mt-2 text-white/80">Gunakan kode <span className="font-mono font-bold text-accent-300">WELCOME20</span> saat pembayaran. Berlaku khusus untuk pelanggan baru.</p>
             <Link to="/products" className="btn-accent mt-5 group">
-              Shop Now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              Belanja Sekarang <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* New Arrivals */}
+      {/* Produk Terbaru */}
       <section className="container-x">
         <div className="flex items-end justify-between mb-6">
           <div className="flex items-center gap-2.5">
@@ -172,12 +172,12 @@ export default function HomePage() {
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">New Arrivals</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">The latest tech in town</p>
+              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Produk Terbaru</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Teknologi terbaru pilihan kami</p>
             </div>
           </div>
           <Link to="/products?tag=new" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
-            View All <ArrowRight className="h-4 w-4" />
+            Lihat Semua <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -185,7 +185,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Best Sellers */}
+      {/* Produk Terlaris */}
       <section className="container-x">
         <div className="flex items-end justify-between mb-6">
           <div className="flex items-center gap-2.5">
@@ -193,12 +193,12 @@ export default function HomePage() {
               <TrendingUp className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Best Sellers</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Most loved by our customers</p>
+              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Produk Terlaris</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Paling disukai pelanggan kami</p>
             </div>
           </div>
           <Link to="/products?tag=bestseller" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
-            View All <ArrowRight className="h-4 w-4" />
+            Lihat Semua <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -206,11 +206,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Recently Viewed */}
+      {/* Terakhir Dilihat */}
       {recentProducts.length > 0 && (
         <section className="container-x">
           <div className="flex items-end justify-between mb-6">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Recently Viewed</h2>
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Terakhir Dilihat</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {recentProducts.map((p) => p && <ProductCard key={p.id} product={p} />)}
