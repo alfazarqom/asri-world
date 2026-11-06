@@ -110,7 +110,7 @@ export default function CartPage() {
               <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Kode Promo</label>
               {promoApplied ? (
                 <div className="flex items-center justify-between rounded-xl bg-success-50 dark:bg-success-950/50 px-3 py-2.5 text-sm text-success-700 dark:text-success-400">
-                  <span className="flex items-center gap-1.5"><Tag className="h-4 w-4" /> WELCOME20 applied</span>
+                  <span className="flex items-center gap-1.5"><Tag className="h-4 w-4" /> Kode WELCOME20 diterapkan</span>
                   <button onClick={() => { setPromoApplied(false); setPromoCode(''); }} className="text-error-500 hover:text-error-600 text-xs font-medium">Hapus</button>
                 </div>
               ) : (
