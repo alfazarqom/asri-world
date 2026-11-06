@@ -25,7 +25,7 @@ export default function OrderConfirmationPage() {
       <div className="container-x py-16 text-center">
         <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Pesanan tidak ditemukan</h1>
         <p className="mt-2 text-slate-500">Sepertinya Anda belum membuat pesanan.</p>
-        <Link to="/products" className="btn-primary mt-6">Start Shopping</Link>
+        <Link to="/products" className="btn-primary mt-6">Mulai Belanja</Link>
       </div>
     );
   }
@@ -56,7 +56,7 @@ export default function OrderConfirmationPage() {
         <div className="card p-6 mb-4">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div>
-              <p className="text-xs text-slate-400 uppercase font-semibold">Order Number</p>
+              <p className="text-xs text-slate-400 uppercase font-semibold">Nomor Pesanan</p>
               <div className="flex items-center gap-2 mt-1">
                 <p className="font-display text-lg font-bold text-slate-900 dark:text-white">{order.id}</p>
                 <button onClick={copyOrderId} className="text-slate-400 hover:text-primary-600 transition" aria-label="Salin ID Pesanan">
@@ -65,7 +65,7 @@ export default function OrderConfirmationPage() {
               </div>
             </div>
             <div className="text-right">
-              <p className="text-xs text-slate-400 uppercase font-semibold">Order Date</p>
+              <p className="text-xs text-slate-400 uppercase font-semibold">Tanggal Pesanan</p>
               <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mt-1">{orderDate}</p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function OrderConfirmationPage() {
 
         {/* Order status tracker */}
         <div className="card p-6 mb-4">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Order Status</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Status Pesanan</h2>
           <div className="flex items-center justify-between">
             {[
               { icon: CheckCircle2, label: 'Dikonfirmasi', active: true },
@@ -130,9 +130,9 @@ export default function OrderConfirmationPage() {
 
         <div className="flex flex-col sm:flex-row gap-3">
           <Link to="/products" className="btn-primary flex-1 group">
-            Continue Shopping <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Lanjutkan Belanja <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
-          <Link to="/orders" className="btn-outline flex-1">View My Orders</Link>
+          <Link to="/orders" className="btn-outline flex-1">Lihat Pesanan Saya</Link>
         </div>
       </div>
     </div>
