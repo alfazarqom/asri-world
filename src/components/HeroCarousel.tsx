@@ -28,7 +28,7 @@ const slides = [
   {
     title: 'Promo Kilat — Hanya 24 Jam',
     subtitle: 'Stok terbatas, hemat lebih banyak',
-    description: 'Grab these lightning deals before they\'re gone. Prices drop every hour.',
+    description: 'Segera manfaatkan promo kilat ini sebelum berakhir. Harga turun setiap jam.',
     cta: 'Serbu Promo Kilat',
     link: '/products?tag=flash',
     bg: 'from-accent-600 via-accent-700 to-accent-900',
@@ -99,7 +99,7 @@ export default function HeroCarousel() {
             key={i}
             onClick={() => goTo(i)}
             className={`h-2 rounded-full transition-all ${i === current ? 'w-8 bg-white' : 'w-2 bg-white/40 hover:bg-white/60'}`}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Buka slide ${i + 1}`}
           />
         ))}
       </div>
