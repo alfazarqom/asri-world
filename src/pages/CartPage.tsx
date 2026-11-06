@@ -130,7 +130,7 @@ export default function CartPage() {
 
             <div className="space-y-2.5 text-sm border-t border-slate-100 dark:border-slate-800 pt-4">
               <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                <span>Subtotal ({cart.length} items)</span>
+                <span>Subtotal ({cart.length} produk)</span>
                 <span className="font-medium text-slate-800 dark:text-slate-100">{formatIDR(subtotalIDR)}</span>
               </div>
               {promoApplied && (

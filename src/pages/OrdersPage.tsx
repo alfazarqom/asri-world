@@ -81,7 +81,7 @@ export default function OrdersPage() {
                   </Link>
                   <div className="flex-1 min-w-0">
                     <Link to={`/product/${item.product.id}`} className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate hover:text-primary-600 transition">{item.product.name}</Link>
-                    <p className="text-xs text-slate-500">Qty: {item.quantity}</p>
+                    <p className="text-xs text-slate-500">Jumlah: {item.quantity}</p>
                   </div>
                   <span className="text-sm font-semibold text-slate-900 dark:text-white">{displayAmount(order, item.product.price * item.quantity)}</span>
                 </div>

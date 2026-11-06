@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
-  ShoppingCart, Heart, Search, Menu, X, Sun, Moon, User, LogOut, Zap, ChevronDown, Beranda, LayoutGrid, Info, Mail, Package,
+  ShoppingCart, Heart, Search, Menu, X, Sun, Moon, User, LogOut, Zap, ChevronDown, Home as HomeIcon, LayoutGrid, Info, Mail, Package,
 } from 'lucide-react';
 import { useStore } from '../store/StoreContext';
 import { useTheme } from '../store/ThemeContext';
@@ -66,7 +66,7 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { to: '/', label: 'Beranda', icon: Beranda },
+    { to: '/', label: 'Beranda', icon: HomeIcon },
     { to: '/products', label: 'Semua Produk', icon: LayoutGrid },
     { to: '/about', label: 'Tentang Kami', icon: Info },
     { to: '/contact', label: 'Kontak', icon: Mail },
@@ -111,7 +111,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => searchQuery.trim() && setShowSearch(true)}
-                    placeholder="Search for products, brands, categories..."
+                    placeholder="Cari produk, merek, atau kategori..."
                     className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 py-2.5 pl-11 pr-4 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:border-primary-500 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-primary-500/20 outline-none transition"
                   />
                 </div>
@@ -139,13 +139,13 @@ export default function Navbar() {
                     onClick={handleSearch}
                     className="w-full px-4 py-2.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-t border-slate-100 dark:border-slate-800"
                   >
-                    See all results for "{searchQuery}"
+                    Lihat semua hasil untuk "{searchQuery}"
                   </button>
                 </div>
               )}
               {showSearch && searchQuery.trim() && searchResults.length === 0 && (
                 <div className="absolute top-full mt-2 w-full rounded-xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 p-6 text-center text-sm text-slate-500 animate-scale-in z-50">
-                  No products found for "{searchQuery}"
+                  Tidak ada produk ditemukan untuk "{searchQuery}"
                 </div>
               )}
             </div>
@@ -254,7 +254,7 @@ export default function Navbar() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products..."
+                  placeholder="Cari produk..."
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 py-2.5 pl-11 pr-4 text-sm outline-none focus:border-primary-500"
                 />
               </form>

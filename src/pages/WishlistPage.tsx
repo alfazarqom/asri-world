@@ -36,7 +36,7 @@ export default function FavoritPage() {
 
       <div className="flex items-center justify-between mb-6">
         <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-          My Favorit <span className="text-lg font-normal text-slate-400">({items.length})</span>
+          Favorit Saya <span className="text-lg font-normal text-slate-400">({items.length})</span>
         </h1>
       </div>
 

@@ -36,7 +36,7 @@ export default function HomePage() {
       <section className="container-x">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { icon: Truck, title: 'Flat Ongkos Kirim', desc: 'Rp52.000 per pesanan' },
+            { icon: Truck, title: 'Ongkos Kirim Tetap', desc: 'Rp52.000 per pesanan' },
             { icon: RotateCcw, title: 'Pengembalian 30 Hari', desc: 'Proses pengembalian mudah' },
             { icon: ShieldCheck, title: 'Garansi 2 Tahun', desc: 'Untuk semua produk' },
             { icon: HeadsetIcon, title: 'Dukungan 24/7', desc: 'Siap membantu Anda' },

@@ -95,14 +95,14 @@ export default function OrderConfirmationPage() {
 
         {/* Order items */}
         <div className="card p-6 mb-4">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Items ({order.items.length})</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Produk ({order.items.length})</h2>
           <div className="space-y-3">
             {order.items.map((item) => (
               <div key={item.product.id} className="flex items-center gap-3">
                 <img src={item.product.images[0]} alt={item.product.name} className="h-16 w-16 rounded-lg object-cover" />
                 <div className="flex-1 min-w-0">
                   <Link to={`/product/${item.product.id}`} className="font-medium text-sm text-slate-800 dark:text-slate-100 truncate hover:text-primary-600 transition">{item.product.name}</Link>
-                  <p className="text-xs text-slate-500" >Qty: {item.quantity} · {displayAmount(item.product.price)}</p>
+                  <p className="text-xs text-slate-500" >Jumlah: {item.quantity} · {displayAmount(item.product.price)}</p>
                 </div>
                 <span className="font-semibold text-slate-900 dark:text-white">{displayAmount(item.product.price * item.quantity)}</span>
               </div>

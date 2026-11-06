@@ -4,7 +4,7 @@ import {
   TrendingUp, Users, Package, ChevronRight, ArrowRight, Sparkles, Heart,
 } from 'lucide-react';
 
-export default function Tentang KamiPage() {
+export default function AboutPage() {
   const stats = [
     { icon: Users, value: '500K+', label: 'Pelanggan Puas' },
     { icon: Package, value: '10K+', label: 'Produk Terjual' },

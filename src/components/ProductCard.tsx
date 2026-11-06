@@ -54,12 +54,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
           {outOfStock && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="rounded-lg bg-slate-900/80 px-3 py-1.5 text-sm font-semibold text-white">Out of Stock</span>
+              <span className="rounded-lg bg-slate-900/80 px-3 py-1.5 text-sm font-semibold text-white">Stok Habis</span>
             </div>
           )}
           <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-2 bg-gradient-to-t from-slate-900/70 to-transparent p-3 transition-transform duration-300 group-hover:translate-y-0">
             <span className="flex items-center gap-1.5 text-xs font-medium text-white">
-              <Eye className="h-4 w-4" /> Quick View
+              <Eye className="h-4 w-4" /> Lihat Cepat
             </span>
           </div>
         </div>
@@ -80,14 +80,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
         <p className={`mt-1.5 text-xs font-medium ${product.stock > 10 ? 'text-success-600 dark:text-success-400' : product.stock > 0 ? 'text-warning-600 dark:text-warning-400' : 'text-error-500'}`}>
-          {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left` : 'Tersedia'}
+          {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Tersisa ${product.stock}` : 'Tersedia'}
         </p>
         <button
           onClick={() => addToCart(product)}
           disabled={outOfStock}
           className="btn-primary mt-3 w-full text-sm"
         >
-          <ShoppingCart className="h-4 w-4" /> Add to Keranjang
+          <ShoppingCart className="h-4 w-4" /> Tambah ke Keranjang
         </button>
       </div>
     </div>
