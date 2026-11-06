@@ -26,7 +26,7 @@ export default function FlashSaleTimer() {
     <div className="flex items-center gap-3">
       <div className="flex items-center gap-1.5 text-accent-600 dark:text-accent-400">
         <Zap className="h-5 w-5 fill-accent-500" />
-        <span className="font-display font-bold text-lg">Flash Sale</span>
+        <span className="font-display font-bold text-lg">Promo Kilat</span>
       </div>
       <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
         <Timer className="h-4 w-4" />
