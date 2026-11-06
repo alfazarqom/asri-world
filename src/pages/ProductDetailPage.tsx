@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Heart, ShoppingCart, Minus, Plus, Star, ChevronRight, Check, Truck,
-  RotateCcw, ShieldCheck, ZoomIn, Share2, ChevronLeft,
+  RotateCcw, ShieldCheck, ZoomIn, Share2,
 } from 'lucide-react';
 import { getProductById, products } from '../data/products';
 import { useStore } from '../store/StoreContext';
