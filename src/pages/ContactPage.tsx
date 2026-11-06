@@ -3,7 +3,7 @@ import { Mail, Telepon, MapPin, Send, MessageSquare, Clock, CheckCircle2, Chevro
 import { Link } from 'react-router-dom';
 import { useStore } from '../store/StoreContext';
 
-export default function ContactPage() {
+export default function KontakPage() {
   const { showToast } = useStore();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -53,34 +53,34 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <div className="container-x py-6">
-      <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6">
-        <Link to="/" className="hover:text-primary-600">Beranda</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">Contact</span>
+    <div classNama="container-x py-6">
+      <nav classNama="flex items-center gap-1.5 text-sm text-slate-500 mb-6">
+        <Link to="/" classNama="hover:text-primary-600">Beranda</Link>
+        <ChevronRight classNama="h-3.5 w-3.5" />
+        <span classNama="text-slate-800 dark:text-slate-200 font-medium">Kontak</span>
       </nav>
 
       {/* Header */}
-      <div className="text-center mb-10">
-        <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Get in touch</h1>
-        <p className="mt-2 text-slate-500 max-w-xl mx-auto">Have a question or need help? We're here for you. Reach out and we'll respond within 24 hours.</p>
+      <div classNama="text-center mb-10">
+        <h1 classNama="font-display text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Hubungi Kami</h1>
+        <p classNama="mt-2 text-slate-500 max-w-xl mx-auto">Punya pertanyaan atau membutuhkan bantuan? Hubungi kami dan kami akan merespons dalam 24 jam.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Contact info cards */}
-        <div className="space-y-4">
+      <div classNama="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Kontak info cards */}
+        <div classNama="space-y-4">
           {contactInfo.map((info, i) => (
-            <div key={i} className="card p-5 hover:shadow-md transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400">
-                  <info.icon className="h-5.5 w-5.5" />
+            <div key={i} classNama="card p-5 hover:shadow-md transition-shadow">
+              <div classNama="flex items-start gap-4">
+                <div classNama="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 dark:bg-primary-950 text-primary-600 dark:text-primary-400">
+                  <info.icon classNama="h-5.5 w-5.5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-slate-400 uppercase">{info.label}</p>
+                  <p classNama="text-xs font-semibold text-slate-400 uppercase">{info.label}</p>
                   {info.href ? (
-                    <a href={info.href} className="text-sm font-medium text-slate-800 dark:text-slate-100 hover:text-primary-600 transition">{info.value}</a>
+                    <a href={info.href} classNama="text-sm font-medium text-slate-800 dark:text-slate-100 hover:text-primary-600 transition">{info.value}</a>
                   ) : (
-                    <p className="text-sm font-medium text-slate-800 dark:text-slate-100">{info.value}</p>
+                    <p classNama="text-sm font-medium text-slate-800 dark:text-slate-100">{info.value}</p>
                   )}
                 </div>
               </div>
@@ -88,38 +88,38 @@ export default function ContactPage() {
           ))}
         </div>
 
-        {/* Contact form */}
-        <div className="lg:col-span-2">
-          <div className="card p-6 sm:p-8">
-            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-1 flex items-center gap-2">
-              <MessageSquare className="h-5 w-5 text-primary-600" /> Send us a message
+        {/* Kontak form */}
+        <div classNama="lg:col-span-2">
+          <div classNama="card p-6 sm:p-8">
+            <h2 classNama="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-1 flex items-center gap-2">
+              <MessageSquare classNama="h-5 w-5 text-primary-600" /> Kirim Pesan kepada Kami
             </h2>
-            <p className="text-sm text-slate-500 mb-6">Fill out the form below and we'll get back to you as soon as possible.</p>
-            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <p classNama="text-sm text-slate-500 mb-6">Isi formulir di bawah ini dan kami akan segera menghubungi Anda.</p>
+            <form onSubmit={handleSubmit} classNama="space-y-4" noValidate>
+              <div classNama="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Name</label>
-                  <input value={form.name} onChange={(e) => update('name', e.target.value)} className={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Nama Anda" />
-                  {errors.name && <p className="mt-1 text-xs text-error-500">{errors.name}</p>}
+                  <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Nama</label>
+                  <input value={form.name} onChange={(e) => update('name', e.target.value)} classNama={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Nama Anda" />
+                  {errors.name && <p classNama="mt-1 text-xs text-error-500">{errors.name}</p>}
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Email</label>
-                  <input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`input-field ${errors.email ? 'border-error-500' : ''}`} placeholder="you@example.com" />
-                  {errors.email && <p className="mt-1 text-xs text-error-500">{errors.email}</p>}
+                  <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Email</label>
+                  <input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} classNama={`input-field ${errors.email ? 'border-error-500' : ''}`} placeholder="you@example.com" />
+                  {errors.email && <p classNama="mt-1 text-xs text-error-500">{errors.email}</p>}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subject</label>
-                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} className={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="Apa yang bisa kami bantu?" />
-                {errors.subject && <p className="mt-1 text-xs text-error-500">{errors.subject}</p>}
+                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subject</label>
+                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} classNama={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="Apa yang bisa kami bantu?" />
+                {errors.subject && <p classNama="mt-1 text-xs text-error-500">{errors.subject}</p>}
               </div>
               <div>
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Message</label>
-                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} className={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Ceritakan lebih lanjut..." />
-                {errors.message && <p className="mt-1 text-xs text-error-500">{errors.message}</p>}
+                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Message</label>
+                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} classNama={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Ceritakan lebih lanjut..." />
+                {errors.message && <p classNama="mt-1 text-xs text-error-500">{errors.message}</p>}
               </div>
-              <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-                {loading ? 'Sending...' : <><Send className="h-4 w-4" /> Kirim Pesan</>}
+              <button type="submit" disabled={loading} classNama="btn-primary w-full h-11">
+                {loading ? 'Sending...' : <><Send classNama="h-4 w-4" /> Kirim Pesan</>}
               </button>
             </form>
           </div>
@@ -127,20 +127,20 @@ export default function ContactPage() {
       </div>
 
       {/* FAQ */}
-      <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Pertanyaan yang Sering Diajukan</h2>
-        <div className="max-w-3xl mx-auto space-y-3">
+      <div classNama="mt-14">
+        <h2 classNama="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Pertanyaan yang Sering Diajukan</h2>
+        <div classNama="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="card overflow-hidden">
+            <div key={i} classNama="card overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="flex w-full items-center justify-between p-4 text-left"
+                classNama="flex w-full items-center justify-between p-4 text-left"
               >
-                <span className="font-semibold text-sm text-slate-800 dark:text-slate-100">{faq.q}</span>
-                <ChevronRight className={`h-4 w-4 text-slate-400 transition-transform shrink-0 ${openFaq === i ? 'rotate-90' : ''}`} />
+                <span classNama="font-semibold text-sm text-slate-800 dark:text-slate-100">{faq.q}</span>
+                <ChevronRight classNama={`h-4 w-4 text-slate-400 transition-transform shrink-0 ${openFaq === i ? 'rotate-90' : ''}`} />
               </button>
               {openFaq === i && (
-                <div className="px-4 pb-4 text-sm text-slate-600 dark:text-slate-300 animate-fade-in">{faq.a}</div>
+                <div classNama="px-4 pb-4 text-sm text-slate-600 dark:text-slate-300 animate-fade-in">{faq.a}</div>
               )}
             </div>
           ))}
@@ -148,13 +148,13 @@ export default function ContactPage() {
       </div>
 
       {/* Map placeholder */}
-      <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Temukan Kami</h2>
-        <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+      <div classNama="mt-14">
+        <h2 classNama="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Temukan Kami</h2>
+        <div classNama="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
           <iframe
             title="Lokasi DigitalWorld"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-122.45,37.74,-122.38,37.80&layer=mapnik&marker=37.7749,-122.4194"
-            className="w-full h-[360px] border-0"
+            classNama="w-full h-[360px] border-0"
             loading="lazy"
           />
         </div>
