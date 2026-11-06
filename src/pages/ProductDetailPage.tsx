@@ -317,7 +317,7 @@ export default function ProductDetailPage() {
                           </div>
                         </div>
                       </div>
-                      <span className="text-xs text-slate-400">{review.date}</span>
+                      <span className="text-xs text-slate-400">{new Date(review.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                     </div>
                     <h5 className="mt-3 font-semibold text-sm text-slate-800 dark:text-slate-100">{review.title}</h5>
                     <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{review.comment}</p>
