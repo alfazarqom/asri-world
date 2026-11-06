@@ -56,7 +56,7 @@ export default function WishlistPage() {
                 </Link>
                 <div className="mt-2 flex items-center gap-2">
                   <span className="text-lg font-bold text-slate-900 dark:text-white">{formatIDR(toIDR(product.price))}</span>
-                  {product.originalPrice > product.price && <span className="text-sm text-slate-400 line-through"">{formatIDR(toIDR(product.originalPrice))}</span>}
+                  {product.originalPrice > product.price && <span className="text-sm text-slate-400 line-through">{formatIDR(toIDR(product.originalPrice))}</span>}
                 </div>
                 <div className="mt-3 flex items-center gap-2">
                   <button
