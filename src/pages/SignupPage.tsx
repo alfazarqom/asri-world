@@ -92,7 +92,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Password</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Kata Sandi</label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
