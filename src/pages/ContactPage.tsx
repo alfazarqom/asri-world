@@ -12,7 +12,7 @@ export default function ContactPage() {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email) e.email = 'Email is required';
+    if (!form.email) e.email = 'Alamat email wajib diisi';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Invalid email';
     if (!form.subject.trim()) e.subject = 'Subject is required';
     if (!form.message.trim()) e.message = 'Message is required';
@@ -55,7 +55,7 @@ export default function ContactPage() {
   return (
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6">
-        <Link to="/" className="hover:text-primary-600">Home</Link>
+        <Link to="/" className="hover:text-primary-600">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <span className="text-slate-800 dark:text-slate-200 font-medium">Contact</span>
       </nav>
@@ -99,7 +99,7 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Name</label>
-                  <input value={form.name} onChange={(e) => update('name', e.target.value)} className={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Your name" />
+                  <input value={form.name} onChange={(e) => update('name', e.target.value)} className={`input-field ${errors.name ? 'border-error-500' : ''}`} placeholder="Nama Anda" />
                   {errors.name && <p className="mt-1 text-xs text-error-500">{errors.name}</p>}
                 </div>
                 <div>
@@ -110,16 +110,16 @@ export default function ContactPage() {
               </div>
               <div>
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subject</label>
-                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} className={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="What can we help with?" />
+                <input value={form.subject} onChange={(e) => update('subject', e.target.value)} className={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="Apa yang bisa kami bantu?" />
                 {errors.subject && <p className="mt-1 text-xs text-error-500">{errors.subject}</p>}
               </div>
               <div>
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Message</label>
-                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} className={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Tell us more..." />
+                <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} className={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Ceritakan lebih lanjut..." />
                 {errors.message && <p className="mt-1 text-xs text-error-500">{errors.message}</p>}
               </div>
               <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-                {loading ? 'Sending...' : <><Send className="h-4 w-4" /> Send Message</>}
+                {loading ? 'Sending...' : <><Send className="h-4 w-4" /> Kirim Pesan</>}
               </button>
             </form>
           </div>
@@ -128,7 +128,7 @@ export default function ContactPage() {
 
       {/* FAQ */}
       <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Frequently Asked Questions</h2>
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Pertanyaan yang Sering Diajukan</h2>
         <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <div key={i} className="card overflow-hidden">
@@ -149,7 +149,7 @@ export default function ContactPage() {
 
       {/* Map placeholder */}
       <div className="mt-14">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Find Us</h2>
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Temukan Kami</h2>
         <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
           <iframe
             title="DigitalWorld Location"
