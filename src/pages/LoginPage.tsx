@@ -7,8 +7,8 @@ export default function LoginPage() {
   const { login } = useStore();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [password, setKata Sandi] = useState('');
+  const [showKata Sandi, setShowKata Sandi] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
 
@@ -16,8 +16,8 @@ export default function LoginPage() {
     const e: typeof errors = {};
     if (!email) e.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Enter a valid email address';
-    if (!password) e.password = 'Password is required';
-    else if (password.length < 6) e.password = 'Password must be at least 6 characters';
+    if (!password) e.password = 'Kata Sandi is required';
+    else if (password.length < 6) e.password = 'Kata Sandi must be at least 6 characters';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -48,7 +48,7 @@ export default function LoginPage() {
         <div className="card p-6 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Email Address</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Alamat Email</label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
@@ -64,20 +64,20 @@ export default function LoginPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Kata Sandi</label>
                 <Link to="/forgot-password" className="text-xs font-medium text-primary-600 dark:text-primary-400 hover:underline">Lupa kata sandi?</Link>
               </div>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showKata Sandi ? 'text' : 'password'}
                   value={password}
-                  onChange={(e) => { setPassword(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
+                  onChange={(e) => { setKata Sandi(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
                   className={`input-field pl-11 pr-11 ${errors.password ? 'border-error-500 focus:border-error-500 focus:ring-error-500/30' : ''}`}
                   placeholder="Enter your password"
                 />
-                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                  {showPassword ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
+                <button type="button" onClick={() => setShowKata Sandi(!showKata Sandi)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  {showKata Sandi ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
                 </button>
               </div>
               {errors.password && <p className="mt-1.5 text-xs text-error-500">{errors.password}</p>}
@@ -85,11 +85,11 @@ export default function LoginPage() {
 
             <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 cursor-pointer">
               <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500/30" />
-              Remember me
+              Ingat saya
             </label>
 
             <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-              {loading ? 'Sedang masuk...' : <>Sign In <ArrowRight className="h-4 w-4" /></>}
+              {loading ? 'Sedang masuk...' : <>Masuk <ArrowRight className="h-4 w-4" /></>}
             </button>
           </form>
 
@@ -102,12 +102,12 @@ export default function LoginPage() {
             <button className="btn-outline !py-2.5 text-sm" onClick={() => { login('demo.user@digitalworld.com', 'Demo User'); navigate('/'); }}>
               <span className="font-bold text-primary-600">D</span> Masuk Demo
             </button>
-            <Link to="/signup" className="btn-outline !py-2.5 text-sm">Create Account</Link>
+            <Link to="/signup" className="btn-outline !py-2.5 text-sm">Buat Akun</Link>
           </div>
         </div>
 
         <p className="mt-6 text-center text-sm text-slate-500">
-          Don't have an account? <Link to="/signup" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Daftar gratis</Link>
+          Belum memiliki akun? <Link to="/signup" className="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Daftar gratis</Link>
         </p>
       </div>
     </div>
