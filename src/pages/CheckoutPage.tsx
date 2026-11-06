@@ -37,7 +37,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     const controller = new AbortController();
     fetch(`${REGION_API}/provinces.json`, { signal: controller.signal })
-      .then((response) => { if (!response.ok) throw new Error('Unable to load provinces'); return response.json(); })
+      .then((response) => { if (!response.ok) throw new Error('Tidak dapat memuat data provinsi'); return response.json(); })
       .then((data: Region[]) => setProvinces(data))
       .catch(() => { if (!controller.signal.aborted) setRegionError('Data provinsi tidak dapat dimuat. Periksa koneksi lalu muat ulang halaman.'); });
     return () => controller.abort();
@@ -47,7 +47,7 @@ export default function CheckoutPage() {
     if (!provinceId) { setCities([]); return; }
     const controller = new AbortController();
     fetch(`${REGION_API}/regencies/${provinceId}.json`, { signal: controller.signal })
-      .then((response) => { if (!response.ok) throw new Error('Unable to load cities'); return response.json(); })
+      .then((response) => { if (!response.ok) throw new Error('Tidak dapat memuat data kabupaten/kota'); return response.json(); })
       .then((data: Region[]) => setCities(data))
       .catch(() => { if (!controller.signal.aborted) setRegionError('Data kabupaten/kota tidak dapat dimuat.'); });
     return () => controller.abort();
@@ -57,7 +57,7 @@ export default function CheckoutPage() {
     if (!cityId) { setDistricts([]); return; }
     const controller = new AbortController();
     fetch(`${REGION_API}/districts/${cityId}.json`, { signal: controller.signal })
-      .then((response) => { if (!response.ok) throw new Error('Unable to load districts'); return response.json(); })
+      .then((response) => { if (!response.ok) throw new Error('Tidak dapat memuat data kecamatan'); return response.json(); })
       .then((data: Region[]) => setDistricts(data))
       .catch(() => { if (!controller.signal.aborted) setRegionError('Data kecamatan tidak dapat dimuat.'); });
     return () => controller.abort();
@@ -67,7 +67,7 @@ export default function CheckoutPage() {
     if (!districtId) { setVillages([]); return; }
     const controller = new AbortController();
     fetch(`${REGION_API}/villages/${districtId}.json`, { signal: controller.signal })
-      .then((response) => { if (!response.ok) throw new Error('Unable to load villages'); return response.json(); })
+      .then((response) => { if (!response.ok) throw new Error('Tidak dapat memuat data kelurahan/desa'); return response.json(); })
       .then((data: Region[]) => setVillages(data))
       .catch(() => { if (!controller.signal.aborted) setRegionError('Data kelurahan/desa tidak dapat dimuat.'); });
     return () => controller.abort();
@@ -134,24 +134,24 @@ export default function CheckoutPage() {
   if (cart.length === 0) {
     return <div className="container-x py-16"><div className="flex flex-col items-center justify-center text-center py-20">
       <ShoppingBag className="h-16 w-16 text-slate-300 dark:text-slate-700 mb-4" />
-      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Your cart is empty</h1>
-      <p className="mt-2 text-slate-500">Add some products before checking out.</p>
-      <Link to="/products" className="btn-primary mt-6">Browse Products</Link>
+      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Keranjang Anda kosong</h1>
+      <p className="mt-2 text-slate-500">Tambahkan produk ke keranjang sebelum melanjutkan pembayaran.</p>
+      <Link to="/products" className="btn-primary mt-6">Jelajahi Produk</Link>
     </div></div>;
   }
 
-  const steps = ['Shipping', 'Delivery', 'Payment'];
+  const steps = ['Ongkos Kirim', 'Delivery', 'Payment'];
   const selectClass = 'input-field cursor-pointer';
   const fieldClass = (field: string) => `input-field ${errors[field] ? 'border-error-500' : ''}`;
 
   return (
     <div className="container-x py-6">
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
-        <Link to="/" className="hover:text-primary-600">Home</Link><ChevronRight className="h-3.5 w-3.5" />
+        <Link to="/" className="hover:text-primary-600">Beranda</Link><ChevronRight className="h-3.5 w-3.5" />
         <Link to="/cart" className="hover:text-primary-600">Cart</Link><ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">Checkout</span>
+        <span className="text-slate-800 dark:text-slate-200 font-medium">Pembayaran</span>
       </nav>
-      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-6">Checkout</h1>
+      <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-6">Pembayaran</h1>
       <div className="flex items-center justify-center mb-8">
         {steps.map((label, index) => <div key={label} className="flex items-center">
           <div className="flex flex-col items-center">
@@ -166,7 +166,7 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           {step === 1 && <div className="card p-6 animate-fade-in">
-            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><MapPin className="h-5 w-5 text-primary-600" /> Shipping Details</h2>
+            <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><MapPin className="h-5 w-5 text-primary-600" /> Ongkos Kirim Details</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div><label className="text-sm font-medium block mb-1.5">Nama Depan</label><input value={form.firstName} onChange={(e) => update('firstName', e.target.value)} className={fieldClass('firstName')} placeholder="Nama depan" />{errors.firstName && <p className="mt-1 text-xs text-error-500">{errors.firstName}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Nama Belakang</label><input value={form.lastName} onChange={(e) => update('lastName', e.target.value)} className={fieldClass('lastName')} placeholder="Nama belakang" />{errors.lastName && <p className="mt-1 text-xs text-error-500">{errors.lastName}</p>}</div>
@@ -210,7 +210,7 @@ export default function CheckoutPage() {
         </div>
 
         <div className="lg:col-span-1"><div className="card p-5 sticky top-32">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Order Summary</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Ringkasan Pesanan</h2>
           <div className="space-y-2.5 max-h-64 overflow-y-auto no-scrollbar mb-3">
             {cart.map((item) => <div key={item.product.id} className="flex items-center gap-3">
               <div className="relative shrink-0"><img src={item.product.images[0]} alt={item.product.name} className="h-14 w-14 rounded-lg object-cover" /><span className="absolute -top-1.5 -right-1.5 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white px-1">{item.quantity}</span></div>
