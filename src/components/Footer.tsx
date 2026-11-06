@@ -8,10 +8,10 @@ export default function Footer() {
   const { showToast } = useStore();
   const [email, setEmail] = useState('');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleBerlangganan = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      showToast('Subscribed! Check your inbox for updates.', 'success');
+      showToast('Berlangganand! Check your inbox for updates.', 'success');
       setEmail('');
     }
   };
@@ -23,10 +23,10 @@ export default function Footer() {
         <div className="container-x py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
-              <h3 className="font-display text-2xl font-bold text-white">Stay in the loop</h3>
-              <p className="mt-1.5 text-slate-400">Subscribe to get exclusive deals, new arrivals, and tech news.</p>
+              <h3 className="font-display text-2xl font-bold text-white">Dapatkan Informasi Terbaru</h3>
+              <p className="mt-1.5 text-slate-400">Berlangganan untuk mendapatkan promo eksklusif, produk terbaru, dan berita teknologi.</p>
             </div>
-            <form onSubmit={handleSubscribe} className="flex w-full max-w-md gap-2">
+            <form onSubmit={handleBerlangganan} className="flex w-full max-w-md gap-2">
               <input
                 type="email"
                 required
@@ -36,7 +36,7 @@ export default function Footer() {
                 className="flex-1 rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 outline-none transition"
               />
               <button type="submit" className="btn-primary shrink-0">
-                Subscribe <ArrowRight className="h-4 w-4" />
+                Berlangganan <ArrowRight className="h-4 w-4" />
               </button>
             </form>
           </div>
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-4">Shop</h4>
+            <h4 className="font-semibold text-white mb-4">Belanja</h4>
             <ul className="space-y-2.5 text-sm">
               {categories.map((cat) => (
                 <li key={cat.id}><Link to={`/products?category=${cat.slug}`} className="text-slate-400 hover:text-primary-400 transition">{cat.name}</Link></li>
@@ -75,12 +75,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-4">Company</h4>
+            <h4 className="font-semibold text-white mb-4">Perusahaan</h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/about" className="text-slate-400 hover:text-primary-400 transition">Tentang Kami Us</Link></li>
+              <li><Link to="/about" className="text-slate-400 hover:text-primary-400 transition">Tentang Kami</Link></li>
               <li><Link to="/contact" className="text-slate-400 hover:text-primary-400 transition">Kontak</Link></li>
-              <li><Link to="/orders" className="text-slate-400 hover:text-primary-400 transition">Track Order</Link></li>
-              <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Careers</a></li>
+              <li><Link to="/orders" className="text-slate-400 hover:text-primary-400 transition">Lacak Pesanan</Link></li>
+              <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Karier</a></li>
               <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Blog</a></li>
             </ul>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2.5 text-slate-400">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary-400 shrink-0" />
-                <span>123 Tech Avenue, San Francisco, CA 94016</span>
+                <span>Indonesia</span>
               </li>
               <li className="flex items-center gap-2.5 text-slate-400">
                 <Phone className="h-4 w-4 text-primary-400 shrink-0" />
@@ -110,9 +110,9 @@ export default function Footer() {
         <div className="container-x py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} DigitalWorld. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-slate-300 transition">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-300 transition">Terms of Service</a>
-            <a href="#" className="hover:text-slate-300 transition">Cookie Policy</a>
+            <a href="#" className="hover:text-slate-300 transition">Kebijakan Privasi</a>
+            <a href="#" className="hover:text-slate-300 transition">Ketentuan Layanan</a>
+            <a href="#" className="hover:text-slate-300 transition">Kebijakan Cookie</a>
           </div>
         </div>
       </div>
