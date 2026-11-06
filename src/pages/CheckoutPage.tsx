@@ -83,21 +83,21 @@ export default function CheckoutPage() {
     if (currentStep === 1) {
       if (!form.firstName.trim()) nextErrors.firstName = 'Wajib diisi';
       if (!form.lastName.trim()) nextErrors.lastName = 'Wajib diisi';
-      if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.email)) nextErrors.email = 'Email tidak valid';
-      const phone = form.phone.replace(/[\\s()-]/g, '');
-      if (!/^(?:\\+62|62|0)8[1-9][0-9]{6,11}$/.test(phone)) nextErrors.phone = 'Gunakan nomor ponsel Indonesia, contoh 081234567890';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) nextErrors.email = 'Email tidak valid';
+      const phone = form.phone.replace(/[\s()-]/g, '');
+      if (!/^(?:\+62|62|0)8[1-9][0-9]{6,11}$/.test(phone)) nextErrors.phone = 'Gunakan nomor ponsel Indonesia, contoh 081234567890';
       if (!form.address.trim()) nextErrors.address = 'Wajib diisi';
       if (!form.province) nextErrors.province = 'Pilih provinsi';
       if (!form.city) nextErrors.city = 'Pilih kabupaten/kota';
       if (!form.district) nextErrors.district = 'Pilih kecamatan';
       if (!form.village) nextErrors.village = 'Pilih kelurahan/desa';
-      if (!/^\\d{5}$/.test(form.zip)) nextErrors.zip = 'Kode pos harus terdiri dari 5 digit';
+      if (!/^\d{5}$/.test(form.zip)) nextErrors.zip = 'Kode pos harus terdiri dari 5 digit';
     }
     if (currentStep === 3) {
-      if (form.cardNumber.replace(/\\s/g, '').length < 16) nextErrors.cardNumber = 'Nomor kartu tidak valid';
+      if (form.cardNumber.replace(/\s/g, '').length < 16) nextErrors.cardNumber = 'Nomor kartu tidak valid';
       if (!form.cardName.trim()) nextErrors.cardName = 'Wajib diisi';
-      if (!/^\\d{2}\\/\\d{2}$/.test(form.expiry)) nextErrors.expiry = 'Gunakan format MM/YY';
-      if (!/^\\d{3,4}$/.test(form.cvv)) nextErrors.cvv = 'CVV tidak valid';
+      if (!/^\d{2}\/\d{2}$/.test(form.expiry)) nextErrors.expiry = 'Gunakan format MM/YY';
+      if (!/^\d{3,4}$/.test(form.cvv)) nextErrors.cvv = 'CVV tidak valid';
     }
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -177,7 +177,7 @@ export default function CheckoutPage() {
               <div><label className="text-sm font-medium block mb-1.5">Kabupaten / Kota</label><select value={cityId} disabled={!provinceId || cities.length === 0} onChange={(e) => { const selected = cities.find((item) => item.id === e.target.value); setCityId(e.target.value); setDistrictId(''); setForm((p) => ({ ...p, city: selected?.name || '', district: '', village: '' })); setDistricts([]); setVillages([]); }} className={selectClass}><option value="">Pilih kabupaten/kota</option>{cities.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select>{errors.city && <p className="mt-1 text-xs text-error-500">{errors.city}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Kecamatan</label><select value={districtId} disabled={!cityId || districts.length === 0} onChange={(e) => { const selected = districts.find((item) => item.id === e.target.value); setDistrictId(e.target.value); setForm((p) => ({ ...p, district: selected?.name || '', village: '' })); setVillages([]); }} className={selectClass}><option value="">Pilih kecamatan</option>{districts.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select>{errors.district && <p className="mt-1 text-xs text-error-500">{errors.district}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Kelurahan / Desa</label><select value={form.village} disabled={!districtId || villages.length === 0} onChange={(e) => update('village', e.target.value)} className={selectClass}><option value="">Pilih kelurahan/desa</option>{villages.map((item) => <option key={item.id} value={item.name}>{item.name}</option>)}</select>{errors.village && <p className="mt-1 text-xs text-error-500">{errors.village}</p>}</div>
-              <div><label className="text-sm font-medium block mb-1.5">Kode Pos</label><input value={form.zip} onChange={(e) => update('zip', e.target.value.replace(/\\D/g, '').slice(0, 5))} className={fieldClass('zip')} placeholder="Contoh: 90111" inputMode="numeric" maxLength={5} />{errors.zip && <p className="mt-1 text-xs text-error-500">{errors.zip}</p>}</div>
+              <div><label className="text-sm font-medium block mb-1.5">Kode Pos</label><input value={form.zip} onChange={(e) => update('zip', e.target.value.replace(/\D/g, '').slice(0, 5))} className={fieldClass('zip')} placeholder="Contoh: 90111" inputMode="numeric" maxLength={5} />{errors.zip && <p className="mt-1 text-xs text-error-500">{errors.zip}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Negara</label><input value="Indonesia" readOnly className="input-field bg-slate-100 dark:bg-slate-800" /></div>
             </div>
             {regionError && <p role="alert" className="mt-3 text-sm text-error-500">{regionError}</p>}
@@ -198,11 +198,11 @@ export default function CheckoutPage() {
             <h2 className="font-semibold text-lg text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><CreditCard className="h-5 w-5 text-primary-600" /> Payment Details</h2>
             <div className="rounded-xl bg-primary-50 dark:bg-primary-950/30 p-3 mb-4 flex items-center gap-2 text-sm text-primary-700 dark:text-primary-400"><Lock className="h-4 w-4 shrink-0" /> This is a demo checkout. No real payment will be processed.</div>
             <div className="space-y-4">
-              <div><label className="text-sm font-medium block mb-1.5">Card Number</label><input value={form.cardNumber} onChange={(e) => update('cardNumber', e.target.value.replace(/\\D/g, '').replace(/(\\d{4})/g, '$1 ').trim().slice(0, 19))} className={fieldClass('cardNumber')} placeholder="4242 4242 4242 4242" inputMode="numeric" />{errors.cardNumber && <p className="mt-1 text-xs text-error-500">{errors.cardNumber}</p>}</div>
+              <div><label className="text-sm font-medium block mb-1.5">Card Number</label><input value={form.cardNumber} onChange={(e) => update('cardNumber', e.target.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim().slice(0, 19))} className={fieldClass('cardNumber')} placeholder="4242 4242 4242 4242" inputMode="numeric" />{errors.cardNumber && <p className="mt-1 text-xs text-error-500">{errors.cardNumber}</p>}</div>
               <div><label className="text-sm font-medium block mb-1.5">Name on Card</label><input value={form.cardName} onChange={(e) => update('cardName', e.target.value)} className={fieldClass('cardName')} placeholder="Nama pada kartu" />{errors.cardName && <p className="mt-1 text-xs text-error-500">{errors.cardName}</p>}</div>
               <div className="grid grid-cols-2 gap-4">
-                <div><label className="text-sm font-medium block mb-1.5">Expiry Date</label><input value={form.expiry} onChange={(e) => { let value = e.target.value.replace(/\\D/g, ''); if (value.length >= 3) value = value.slice(0, 2) + '/' + value.slice(2, 4); update('expiry', value); }} className={fieldClass('expiry')} placeholder="MM/YY" maxLength={5} />{errors.expiry && <p className="mt-1 text-xs text-error-500">{errors.expiry}</p>}</div>
-                <div><label className="text-sm font-medium block mb-1.5">CVV</label><input value={form.cvv} onChange={(e) => update('cvv', e.target.value.replace(/\\D/g, '').slice(0, 4))} className={fieldClass('cvv')} placeholder="123" inputMode="numeric" />{errors.cvv && <p className="mt-1 text-xs text-error-500">{errors.cvv}</p>}</div>
+                <div><label className="text-sm font-medium block mb-1.5">Expiry Date</label><input value={form.expiry} onChange={(e) => { let value = e.target.value.replace(/\D/g, ''); if (value.length >= 3) value = value.slice(0, 2) + '/' + value.slice(2, 4); update('expiry', value); }} className={fieldClass('expiry')} placeholder="MM/YY" maxLength={5} />{errors.expiry && <p className="mt-1 text-xs text-error-500">{errors.expiry}</p>}</div>
+                <div><label className="text-sm font-medium block mb-1.5">CVV</label><input value={form.cvv} onChange={(e) => update('cvv', e.target.value.replace(/\D/g, '').slice(0, 4))} className={fieldClass('cvv')} placeholder="123" inputMode="numeric" />{errors.cvv && <p className="mt-1 text-xs text-error-500">{errors.cvv}</p>}</div>
               </div>
             </div>
             <div className="flex gap-3 mt-6"><button onClick={() => setStep(2)} className="btn-outline flex-1">Kembali</button><button onClick={handlePlaceOrder} className="btn-accent flex-1"><Check className="h-5 w-5" /> Place Order — {formatIDR(finalTotal)}</button></div>
@@ -220,6 +220,7 @@ export default function CheckoutPage() {
           </div>
           <div className="space-y-2 text-sm border-t border-slate-100 dark:border-slate-800 pt-3">
             <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Subtotal</span><span>{formatIDR(subtotalIDR)}</span></div>
+            {discountIDR > 0 && <div className="flex justify-between text-success-600"><span>Diskon</span><span>-{formatIDR(discountIDR)}</span></div>}
             <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Ongkos kirim</span><span>{formatIDR(shippingCost)}</span></div>
           </div>
           <div className="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-3 mt-3"><span className="font-semibold text-slate-800 dark:text-slate-100">Total</span><span className="font-display text-xl font-bold text-slate-900 dark:text-white">{formatIDR(finalTotal)}</span></div>
