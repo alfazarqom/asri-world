@@ -6,17 +6,17 @@ import {
 
 export default function Tentang KamiPage() {
   const stats = [
-    { icon: Users, value: '500K+', label: 'Happy Customers' },
-    { icon: Package, value: '10K+', label: 'Products Sold' },
-    { icon: TrendingUp, value: '150+', label: 'Countries Served' },
-    { icon: Award, value: '15+', label: 'Years in Business' },
+    { icon: Users, value: '500K+', label: 'Pelanggan Puas' },
+    { icon: Package, value: '10K+', label: 'Produk Terjual' },
+    { icon: TrendingUp, value: '150+', label: 'Negara Terjangkau' },
+    { icon: Award, value: '15+', label: 'Tahun Beroperasi' },
   ];
 
   const values = [
-    { icon: ShieldCheck, title: 'Quality First', desc: 'We rigorously test every product to ensure it meets our high standards before it reaches you.' },
-    { icon: Truck, title: 'Fast & Reliable', desc: 'Free shipping on orders over $50, with express options for when you need it fast.' },
-    { icon: HeadsetIcon, title: 'Always Supportive', desc: 'Our 24/7 support team is always ready to help with any question or concern.' },
-    { icon: RotateCcw, title: 'Easy Returns', desc: 'Not satisfied? Return any product within 30 days for a full refund — no questions asked.' },
+    { icon: ShieldCheck, title: 'Utamakan Kualitas', desc: 'Kami menguji setiap produk secara menyeluruh untuk memastikan kualitasnya memenuhi standar tinggi sebelum sampai kepada Anda.' },
+    { icon: Truck, title: 'Cepat & Andal', desc: 'Pengiriman gratis untuk pesanan di atas $50, dengan pilihan ekspres saat Anda membutuhkan pengiriman lebih cepat.' },
+    { icon: HeadsetIcon, title: 'Selalu Siap Membantu', desc: 'Tim dukungan kami siap membantu menjawab pertanyaan dan menangani kendala Anda selama 24 jam setiap hari.' },
+    { icon: RotateCcw, title: 'Pengembalian Mudah', desc: 'Kurang puas? Kembalikan produk dalam 30 hari untuk mendapatkan pengembalian dana penuh.' },
   ];
 
   return (
@@ -111,10 +111,10 @@ export default function Tentang KamiPage() {
         <div className="relative max-w-3xl mx-auto">
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 sm:-translate-x-1/2" />
           {[
-            { year: '2011', title: 'The Beginning', desc: 'Started as a small online store with just 50 products.' },
-            { year: '2015', title: 'Going Global', desc: 'Expanded to serve customers in 50+ countries worldwide.' },
-            { year: '2019', title: '500K Customers', desc: 'Reached half a million happy customers with 99% satisfaction.' },
-            { year: '2024', title: 'Innovation Hub', desc: 'Launched our AI-powered product recommendation engine.' },
+            { year: '2011', title: 'Awal Perjalanan', desc: 'Berawal sebagai toko online kecil dengan hanya 50 produk.' },
+            { year: '2015', title: 'Menjangkau Dunia', desc: 'Berkembang hingga melayani pelanggan di lebih dari 50 negara.' },
+            { year: '2019', title: '500 Ribu Pelanggan', desc: 'Mencapai setengah juta pelanggan dengan tingkat kepuasan 99%.' },
+            { year: '2024', title: 'Pusat Inovasi', desc: 'Meluncurkan fitur rekomendasi produk berbasis AI.' },
           ].map((item, i) => (
             <div key={i} className={`relative flex items-start gap-6 mb-8 ${i % 2 === 0 ? 'sm:flex-row-reverse sm:text-right' : ''}`}>
               <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-xs font-bold ring-4 ring-white dark:ring-slate-950 z-10">
