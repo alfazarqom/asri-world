@@ -23,8 +23,8 @@ export default function OrderConfirmationPage() {
   if (!order) {
     return (
       <div className="container-x py-16 text-center">
-        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">No order found</h1>
-        <p className="mt-2 text-slate-500">It looks like you haven't placed an order yet.</p>
+        <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Pesanan tidak ditemukan</h1>
+        <p className="mt-2 text-slate-500">Sepertinya Anda belum membuat pesanan.</p>
         <Link to="/products" className="btn-primary mt-6">Start Shopping</Link>
       </div>
     );
@@ -48,8 +48,8 @@ export default function OrderConfirmationPage() {
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-success-100 dark:bg-success-950 mb-5 animate-scale-in">
             <CheckCircle2 className="h-10 w-10 text-success-600 dark:text-success-400" />
           </div>
-          <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-white">Order Confirmed!</h1>
-          <p className="mt-2 text-slate-500">Thank you for your purchase. Your order is being processed.</p>
+          <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-white">Pesanan Berhasil!</h1>
+          <p className="mt-2 text-slate-500">Terima kasih telah berbelanja. Pesanan Anda sedang diproses.</p>
         </div>
 
         {/* Order info */}
@@ -90,7 +90,7 @@ export default function OrderConfirmationPage() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-sm text-slate-500 text-center">Estimated delivery: <span className="font-semibold text-slate-700 dark:text-slate-300">{estimatedDelivery}</span></p>
+          <p className="mt-4 text-sm text-slate-500 text-center">Perkiraan pengiriman: <span className="font-semibold text-slate-700 dark:text-slate-300">{estimatedDelivery}</span></p>
         </div>
 
         {/* Order items */}
@@ -114,14 +114,14 @@ export default function OrderConfirmationPage() {
             {order.shippingCost !== undefined && <div className="flex justify-between"><span>Ongkos kirim</span><span>{displayAmount(order.shippingCost)}</span></div>}
           </div>
           <div className="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-3 mt-3">
-            <span className="font-semibold text-slate-800 dark:text-slate-100">Total Paid</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-100">Total Dibayar</span>
             <span className="font-display text-xl font-bold text-slate-900 dark:text-white">{displayAmount(order.total)}</span>
           </div>
         </div>
 
         {/* Shipping address */}
         <div className="card p-6 mb-6">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Shipping Address</h2>
+          <h2 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Alamat Pengiriman</h2>
           <p className="text-sm text-slate-600 dark:text-slate-300">{order.shipping.name}</p>
           <p className="text-sm text-slate-600 dark:text-slate-300">{order.shipping.address}</p>
           {order.shipping.phone && <p className="text-sm text-slate-600 dark:text-slate-300">Telepon: {order.shipping.phone}</p>}
