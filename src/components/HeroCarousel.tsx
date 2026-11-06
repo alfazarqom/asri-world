@@ -10,7 +10,7 @@ const slides = [
   {
     title: 'Promo Teknologi Besar-besaran',
     subtitle: 'Diskon hingga 40% untuk gadget premium',
-    description: 'Shop the latest smartphones, laptops, and accessories at unbeatable prices.',
+    description: 'Temukan ponsel pintar, laptop, dan aksesori terbaru dengan harga terbaik.',
     cta: 'Lihat Promo',
     link: '/products?tag=deal',
     bg: 'from-primary-600 via-primary-700 to-primary-900',
@@ -19,7 +19,7 @@ const slides = [
   {
     title: 'Produk Terbaru Telah Hadir',
     subtitle: 'Teknologi terbaru untuk musim ini',
-    description: 'Discover the newest devices that just hit our shelves — be the first to own them.',
+    description: 'Temukan perangkat terbaru yang baru saja hadir dan jadilah yang pertama memilikinya.',
     cta: 'Jelajahi Produk Baru',
     link: '/products?tag=new',
     bg: 'from-slate-800 via-slate-900 to-black',
@@ -86,10 +86,10 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      <button onClick={prev} className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Previous slide">
+      <button onClick={prev} className="absolute left-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Slide sebelumnya">
         <ChevronLeft className="h-5 w-5" />
       </button>
-      <button onClick={next} className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Next slide">
+      <button onClick={next} className="absolute right-4 top-1/2 z-20 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur hover:bg-white/30 transition" aria-label="Slide berikutnya">
         <ChevronRight className="h-5 w-5" />
       </button>
 
