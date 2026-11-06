@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Telepon, MapPin, Send, MessageSquare, Clock, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, Clock, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../store/StoreContext';
 
@@ -39,7 +39,7 @@ export default function KontakPage() {
 
   const contactInfo = [
     { icon: Mail, label: 'Email', value: 'support@digitalworld.com', href: 'mailto:support@digitalworld.com' },
-    { icon: Telepon, label: 'Telepon', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
+    { icon: Phone, label: 'Telepon', value: '+1 (800) 555-0199', href: 'tel:+18005550199' },
     { icon: MapPin, label: 'Alamat', value: '123 Tech Avenue, San Francisco, CA 94016', href: null },
     { icon: Clock, label: 'Jam Operasional', value: 'Senin–Jumat, 09.00–18.00 WIB', href: null },
   ];

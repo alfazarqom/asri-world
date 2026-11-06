@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               <button type="submit" disabled={loading} className="btn-primary w-full h-11">
-                {loading ? 'Sending...' : <>Kirim Tautan Pengaturan Ulang <ArrowRight className="h-4 w-4" /></>}
+                {loading ? 'Sedang mengirim...' : <>Kirim Tautan Pengaturan Ulang <ArrowRight className="h-4 w-4" /></>}
               </button>
             </form>
           )}

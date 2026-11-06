@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import {
-  Zap, Target, Eye, Award, Truck, ShieldCheck, HeadsetIcon, RotateCcw,
-  TrendingUp, Users, Package, ChevronRight, ArrowRight, Sparkles, Heart,
+  Target, Eye, Award, Truck, ShieldCheck, HeadsetIcon, RotateCcw,
+  TrendingUp, Users, Package, ChevronRight, ArrowRight, Sparkles,
 } from 'lucide-react';
 
-export default function Tentang KamiPage() {
+export default function AboutPage() {
   const stats = [
     { icon: Users, value: '500K+', label: 'Pelanggan Puas' },
     { icon: Package, value: '10K+', label: 'Produk Terjual' },

@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, Zap, ArrowRight } from 'lucide-react';
 import { useStore } from '../store/StoreContext';
 
 export default function LoginPage() {
   const { login } = useStore();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [password, setKata Sandi] = useState('');
-  const [showKata Sandi, setShowKata Sandi] = useState(false);
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const e: typeof errors = {};
-    if (!email) e.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Enter a valid email address';
-    if (!password) e.password = 'Kata Sandi is required';
-    else if (password.length < 6) e.password = 'Kata Sandi must be at least 6 characters';
+    if (!email) e.email = 'Alamat email wajib diisi';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Masukkan alamat email yang valid';
+    if (!password) e.password = 'Kata sandi wajib diisi';
+    else if (password.length < 6) e.password = 'Kata sandi harus terdiri dari minimal 6 karakter';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -70,14 +70,14 @@ export default function LoginPage() {
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-slate-400" />
                 <input
-                  type={showKata Sandi ? 'text' : 'password'}
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
-                  onChange={(e) => { setKata Sandi(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
+                  onChange={(e) => { setPassword(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
                   className={`input-field pl-11 pr-11 ${errors.password ? 'border-error-500 focus:border-error-500 focus:ring-error-500/30' : ''}`}
-                  placeholder="Enter your password"
+                  placeholder="Masukkan kata sandi"
                 />
-                <button type="button" onClick={() => setShowKata Sandi(!showKata Sandi)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                  {showKata Sandi ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  {showPassword ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
                 </button>
               </div>
               {errors.password && <p className="mt-1.5 text-xs text-error-500">{errors.password}</p>}
@@ -95,7 +95,7 @@ export default function LoginPage() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-slate-800" /></div>
-            <div className="relative flex justify-center"><span className="bg-white dark:bg-slate-900 px-3 text-xs text-slate-400">or</span></div>
+            <div className="relative flex justify-center"><span className="bg-white dark:bg-slate-900 px-3 text-xs text-slate-400">atau</span></div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">

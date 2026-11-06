@@ -100,7 +100,7 @@ export default function SignupPage() {
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
                   className={`input-field pl-11 pr-11 ${errors.password ? 'border-error-500' : ''}`}
-                  placeholder="Create a password"
+                  placeholder="Buat kata sandi"
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                   {showPassword ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
@@ -109,9 +109,9 @@ export default function SignupPage() {
               {password && (
                 <div className="mt-2 space-y-1">
                   {[
-                    { ok: passwordChecks.length, label: 'At least 6 characters' },
-                    { ok: passwordChecks.upper, label: 'One uppercase letter' },
-                    { ok: passwordChecks.number, label: 'One number' },
+                    { ok: passwordChecks.length, label: 'Minimal 6 karakter' },
+                    { ok: passwordChecks.upper, label: 'Minimal satu huruf kapital' },
+                    { ok: passwordChecks.number, label: 'Minimal satu angka' },
                   ].map((check, i) => (
                     <div key={i} className="flex items-center gap-1.5 text-xs">
                       {check.ok ? <CheckCircle2 className="h-3.5 w-3.5 text-success-500" /> : <XCircle className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600" />}
@@ -132,7 +132,7 @@ export default function SignupPage() {
                   value={confirmPassword}
                   onChange={(e) => { setConfirmPassword(e.target.value); setErrors((p) => ({ ...p, confirmPassword: undefined })); }}
                   className={`input-field pl-11 ${errors.confirmPassword ? 'border-error-500' : ''}`}
-                  placeholder="Re-enter your password"
+                  placeholder="Masukkan kembali kata sandi"
                 />
               </div>
               {errors.confirmPassword && <p className="mt-1.5 text-xs text-error-500">{errors.confirmPassword}</p>}

@@ -205,7 +205,7 @@ export default function CheckoutPage() {
                 <div><label className="text-sm font-medium block mb-1.5">CVV</label><input value={form.cvv} onChange={(e) => update('cvv', e.target.value.replace(/\D/g, '').slice(0, 4))} className={fieldClass('cvv')} placeholder="123" inputMode="numeric" />{errors.cvv && <p className="mt-1 text-xs text-error-500">{errors.cvv}</p>}</div>
               </div>
             </div>
-            <div className="flex gap-3 mt-6"><button onClick={() => setStep(2)} className="btn-outline flex-1">Kembali</button><button onClick={handlePlaceOrder} className="btn-accent flex-1"><Check className="h-5 w-5" /> Place Order — {formatIDR(finalTotal)}</button></div>
+            <div className="flex gap-3 mt-6"><button onClick={() => setStep(2)} className="btn-outline flex-1">Kembali</button><button onClick={handlePlaceOrder} className="btn-accent flex-1"><Check className="h-5 w-5" /> Buat Pesanan — {formatIDR(finalTotal)}</button></div>
           </div>}
         </div>
 

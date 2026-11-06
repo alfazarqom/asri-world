@@ -11,7 +11,7 @@ export default function Footer() {
   const handleBerlangganan = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      showToast('Berlangganand! Check your inbox for updates.', 'success');
+      showToast('Berhasil berlangganan! Periksa kotak masuk email Anda untuk mendapatkan informasi terbaru.', 'success');
       setEmail('');
     }
   };
@@ -58,7 +58,7 @@ export default function Footer() {
             </p>
             <div className="mt-5 flex items-center gap-2">
               {[Facebook, Twitter, Instagram, Youtube, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-200 hover:scale-105" aria-label="Social link">
+                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-200 hover:scale-105" aria-label="Tautan media sosial">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -81,7 +81,7 @@ export default function Footer() {
               <li><Link to="/contact" className="text-slate-400 hover:text-primary-400 transition">Kontak</Link></li>
               <li><Link to="/orders" className="text-slate-400 hover:text-primary-400 transition">Lacak Pesanan</Link></li>
               <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Karier</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Blog</a></li>
+              <li><a href="#" className="text-slate-400 hover:text-primary-400 transition">Artikel</a></li>
             </ul>
           </div>
 
@@ -108,7 +108,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-slate-800">
         <div className="container-x py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} DigitalWorld. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DigitalWorld. Hak cipta dilindungi.</p>
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-slate-300 transition">Kebijakan Privasi</a>
             <a href="#" className="hover:text-slate-300 transition">Ketentuan Layanan</a>

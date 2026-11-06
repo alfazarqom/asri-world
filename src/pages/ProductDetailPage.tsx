@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Heart, ShoppingCart, Minus, Plus, Star, ChevronRight, Check, Truck,
-  RotateCcw, ShieldCheck, ZoomIn, Share2, ChevronLeft,
+  RotateCcw, ShieldCheck, ZoomIn, Share2,
 } from 'lucide-react';
 import { getProductById, products } from '../data/products';
 import { useStore } from '../store/StoreContext';
@@ -125,7 +125,7 @@ export default function ProductDetailPage() {
                 style={zoom.active ? { transform: `scale(2)`, transformOrigin: `${zoom.x}% ${zoom.y}%` } : undefined}
               />
               <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                {discount > 0 && <span className="badge bg-error-500 text-white">-{discount}% OFF</span>}
+                {discount > 0 && <span className="badge bg-error-500 text-white">-{discount}% HEMAT</span>}
                 {product.tags.includes('new') && <span className="badge bg-primary-600 text-white">Baru</span>}
                 {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Terlaris</span>}
               </div>
@@ -144,7 +144,7 @@ export default function ProductDetailPage() {
           <div className="mt-3 flex items-center gap-4">
             <Rating rating={avgRating} size="md" showCount count={product.reviewCount} />
             <span className={`text-sm font-medium ${outOfStock ? 'text-error-500' : product.stock <= 10 ? 'text-warning-600 dark:text-warning-400' : 'text-success-600 dark:text-success-400'}`}>
-              {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Only ${product.stock} left!` : 'Tersedia'}
+              {outOfStock ? 'Stok habis' : product.stock <= 10 ? `Tersisa ${product.stock} produk!` : 'Tersedia'}
             </span>
           </div>
 
@@ -279,7 +279,7 @@ export default function ProductDetailPage() {
                   <div className="mt-2 flex justify-center">
                     <Rating rating={avgRating} size="lg" />
                   </div>
-                  <p className="mt-1.5 text-sm text-slate-500">{product.reviews.length} reviews</p>
+                  <p className="mt-1.5 text-sm text-slate-500">{product.reviews.length} ulasan</p>
                 </div>
                 <div className="mt-4 space-y-2">
                   {ratingDistribution.map((r) => (
