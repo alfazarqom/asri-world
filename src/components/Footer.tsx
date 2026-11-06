@@ -54,7 +54,7 @@ export default function Footer() {
               <span className="font-display text-xl font-extrabold text-white">Digital<span className="text-primary-400">World</span></span>
             </Link>
             <p className="mt-4 text-sm text-slate-400 max-w-xs leading-relaxed">
-              Your one-stop destination for premium tech products. We bring you the latest gadgets at the best prices, with fast shipping and exceptional service.
+              Destinasi pilihan untuk produk teknologi premium. Kami menghadirkan gadget terbaru dengan harga terbaik, pengiriman cepat, dan layanan istimewa.
             </p>
             <div className="mt-5 flex items-center gap-2">
               {[Facebook, Twitter, Instagram, Youtube, Linkedin].map((Icon, i) => (
