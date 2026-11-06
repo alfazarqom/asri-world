@@ -22,13 +22,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="badge bg-error-500 text-white">-{discount}%</span>
         )}
         {product.tags.includes('new') && (
-          <span className="badge bg-primary-600 text-white">New</span>
+          <span className="badge bg-primary-600 text-white">Baru</span>
         )}
         {product.tags.includes('bestseller') && (
-          <span className="badge bg-accent-500 text-white">Best Seller</span>
+          <span className="badge bg-accent-500 text-white">Terlaris</span>
         )}
         {product.tags.includes('flash') && (
-          <span className="badge bg-warning-500 text-slate-900">Flash</span>
+          <span className="badge bg-warning-500 text-slate-900">Promo Kilat</span>
         )}
       </div>
 
