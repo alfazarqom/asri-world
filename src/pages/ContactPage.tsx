@@ -109,12 +109,12 @@ export default function KontakPage() {
                 </div>
               </div>
               <div>
-                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subject</label>
+                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Subjek</label>
                 <input value={form.subject} onChange={(e) => update('subject', e.target.value)} classNama={`input-field ${errors.subject ? 'border-error-500' : ''}`} placeholder="Apa yang bisa kami bantu?" />
                 {errors.subject && <p classNama="mt-1 text-xs text-error-500">{errors.subject}</p>}
               </div>
               <div>
-                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Message</label>
+                <label classNama="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5 block">Pesan</label>
                 <textarea value={form.message} onChange={(e) => update('message', e.target.value)} rows={5} classNama={`input-field resize-none ${errors.message ? 'border-error-500' : ''}`} placeholder="Ceritakan lebih lanjut..." />
                 {errors.message && <p classNama="mt-1 text-xs text-error-500">{errors.message}</p>}
               </div>
