@@ -85,7 +85,7 @@ export default function SignupPage() {
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
                   className={`input-field pl-11 ${errors.email ? 'border-error-500' : ''}`}
-                  placeholder="you@example.com"
+                  placeholder="nama@email.com"
                 />
               </div>
               {errors.email && <p className="mt-1.5 text-xs text-error-500">{errors.email}</p>}
