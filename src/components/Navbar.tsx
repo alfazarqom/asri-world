@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
-  ShoppingCart, Heart, Search, Menu, X, Sun, Moon, User, LogOut, Zap, ChevronDown, Home, LayoutGrid, Info, Mail, Package,
+  ShoppingCart, Heart, Search, Menu, X, Sun, Moon, User, LogOut, Zap, ChevronDown, Beranda, LayoutGrid, Info, Mail, Package,
 } from 'lucide-react';
 import { useStore } from '../store/StoreContext';
 import { useTheme } from '../store/ThemeContext';
@@ -22,7 +22,7 @@ export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
+  const [showKategoriDropdown, setShowKategoriDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
@@ -66,7 +66,7 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home', icon: Home },
+    { to: '/', label: 'Beranda', icon: Beranda },
     { to: '/products', label: 'Semua Produk', icon: LayoutGrid },
     { to: '/about', label: 'Tentang Kami', icon: Info },
     { to: '/contact', label: 'Kontak', icon: Mail },
@@ -79,12 +79,12 @@ export default function Navbar() {
         <div className="container-x flex items-center justify-between py-2">
           <p className="flex items-center gap-1.5">
             <Zap className="h-3.5 w-3.5 text-accent-400" />
-            Flat shipping Rp52.000 — Shop now!
+            Ongkos kirim tetap Rp52.000 — Belanja sekarang!
           </p>
           <div className="flex items-center gap-4">
-            <Link to="/orders" className="hover:text-white transition">Track Order</Link>
+            <Link to="/orders" className="hover:text-white transition">Lacak Pesanan</Link>
             <span className="text-slate-600">|</span>
-            <Link to="/contact" className="hover:text-white transition">Help</Link>
+            <Link to="/contact" className="hover:text-white transition">Bantuan</Link>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
               {/* Search dropdown */}
               {showSearch && searchResults.length > 0 && (
                 <div className="absolute top-full mt-2 w-full rounded-xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden animate-scale-in z-50">
-                  <p className="px-4 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wide">Suggestions</p>
+                  <p className="px-4 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wide">Saran Pencarian</p>
                   {searchResults.map((p) => (
                     <Link
                       key={p.id}
@@ -187,17 +187,17 @@ export default function Navbar() {
                           <p className="text-xs text-slate-500 truncate">{user.email}</p>
                         </div>
                         <Link to="/orders" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
-                          <Package className="h-4 w-4" /> My Orders
+                          <Package className="h-4 w-4" /> Pesanan Saya
                         </Link>
                         <button onClick={logout} className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-error-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
-                          <LogOut className="h-4 w-4" /> Logout
+                          <LogOut className="h-4 w-4" /> Keluar
                         </button>
                       </div>
                     )}
                   </>
                 ) : (
                   <Link to="/login" className="btn-primary h-10 px-4 text-sm hidden sm:flex">
-                    <User className="h-4 w-4" /> Login
+                    <User className="h-4 w-4" /> Masuk
                   </Link>
                 )}
               </div>
@@ -210,14 +210,14 @@ export default function Navbar() {
 
           {/* Nav links row */}
           <nav className="hidden md:flex items-center gap-1 h-12 border-t border-slate-100 dark:border-slate-800">
-            <Link to="/" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Home</Link>
+            <Link to="/" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Beranda</Link>
 
-            {/* Categories dropdown */}
-            <div className="relative" onMouseEnter={() => setShowCategoriesDropdown(true)} onMouseLeave={() => setShowCategoriesDropdown(false)}>
+            {/* Kategori dropdown */}
+            <div className="relative" onMouseEnter={() => setShowKategoriDropdown(true)} onMouseLeave={() => setShowKategoriDropdown(false)}>
               <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">
-                Categories <ChevronDown className="h-3.5 w-3.5" />
+                Kategori <ChevronDown className="h-3.5 w-3.5" />
               </button>
-              {showCategoriesDropdown && (
+              {showKategoriDropdown && (
                 <div className="absolute top-full left-0 pt-1 w-64 rounded-xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 py-2 animate-scale-in">
                   {categories.map((cat) => (
                     <Link key={cat.id} to={`/products?category=${cat.slug}`} className="flex items-start gap-3 px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
@@ -235,10 +235,10 @@ export default function Navbar() {
             </div>
 
             <Link to="/products?tag=deal" className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:text-accent-700 transition">
-              <Zap className="h-3.5 w-3.5" /> Today's Deals
+              <Zap className="h-3.5 w-3.5" /> Promo Hari Ini
             </Link>
-            <Link to="/products?tag=new" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">New Arrivals</Link>
-            <Link to="/products?tag=bestseller" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Best Sellers</Link>
+            <Link to="/products?tag=new" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Produk Terbaru</Link>
+            <Link to="/products?tag=bestseller" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Produk Terlaris</Link>
             <Link to="/about" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Tentang Kami</Link>
             <Link to="/contact" className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition">Kontak</Link>
           </nav>
@@ -264,7 +264,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-                <p className="px-3 py-1.5 text-xs font-semibold text-slate-400 uppercase">Categories</p>
+                <p className="px-3 py-1.5 text-xs font-semibold text-slate-400 uppercase">Kategori</p>
                 {categories.map((cat) => (
                   <Link key={cat.id} to={`/products?category=${cat.slug}`} className="block px-3 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition rounded-lg">
                     {cat.name}
@@ -273,7 +273,7 @@ export default function Navbar() {
               </div>
               {!user && (
                 <Link to="/login" className="btn-primary w-full mt-3">
-                  <User className="h-4 w-4" /> Login / Sign Up
+                  <User className="h-4 w-4" /> Masuk / Sign Up
                 </Link>
               )}
             </div>
