@@ -12,8 +12,8 @@ import { useStore } from '../store/StoreContext';
 import { getProductById } from '../data/products';
 
 const categoryIcons: Record<string, typeof Smartphone> = {
-  Mobiles: Smartphone, Laptops: Laptop, Headphones: Headphones,
-  'Smart Watches': Watch, Cameras: Camera, Accessories: Plug,
+  Ponsel: Smartphone, Laptop: Laptop, Headphone: Headphones,
+  'Jam Tangan Pintar': Watch, Kamera: Camera, Aksesori: Plug,
 };
 
 export default function HomePage() {
@@ -152,7 +152,7 @@ export default function HomePage() {
           <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-accent-400/20 blur-3xl" />
           <div className="absolute -bottom-16 left-1/3 h-56 w-56 rounded-full bg-primary-400/20 blur-3xl" />
           <div className="relative z-10 max-w-xl">
-            <span className="badge bg-white/15 text-white backdrop-blur px-3 py-1">Limited Time</span>
+            <span className="badge bg-white/15 text-white backdrop-blur px-3 py-1">Waktu Terbatas</span>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl text-balance">
               Dapatkan diskon 20% untuk pesanan pertama
             </h2>
