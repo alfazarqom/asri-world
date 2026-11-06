@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
       <div className="container-x py-20 text-center">
         <h1 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Produk tidak ditemukan</h1>
         <p className="mt-2 text-slate-500">Produk yang Anda cari tidak tersedia.</p>
-        <Link to="/products" className="btn-primary mt-6">Browse Products</Link>
+        <Link to="/products" className="btn-primary mt-6">Jelajahi Produk</Link>
       </div>
     );
   }
@@ -86,7 +86,7 @@ export default function ProductDetailPage() {
     <div className="container-x py-6">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6 overflow-hidden">
-        <Link to="/" className="hover:text-primary-600 shrink-0">Home</Link>
+        <Link to="/" className="hover:text-primary-600 shrink-0">Beranda</Link>
         <ChevronRight className="h-3.5 w-3.5 shrink-0" />
         <Link to={`/products?category=${product.category}`} className="hover:text-primary-600 capitalize shrink-0">{product.category}</Link>
         <ChevronRight className="h-3.5 w-3.5 shrink-0" />
@@ -126,8 +126,8 @@ export default function ProductDetailPage() {
               />
               <div className="absolute top-4 left-4 flex flex-col gap-1.5">
                 {discount > 0 && <span className="badge bg-error-500 text-white">-{discount}% OFF</span>}
-                {product.tags.includes('new') && <span className="badge bg-primary-600 text-white">New</span>}
-                {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Best Seller</span>}
+                {product.tags.includes('new') && <span className="badge bg-primary-600 text-white">Baru</span>}
+                {product.tags.includes('bestseller') && <span className="badge bg-accent-500 text-white">Terlaris</span>}
               </div>
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 opacity-0 group-hover:opacity-100 transition">
                 <ZoomIn className="h-3.5 w-3.5" /> Arahkan kursor untuk memperbesar
