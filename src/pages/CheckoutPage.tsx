@@ -140,7 +140,7 @@ export default function CheckoutPage() {
     </div></div>;
   }
 
-  const steps = ['Ongkos Kirim', 'Pengiriman', 'Pembayaran'];
+  const steps = ['Alamat Pengiriman', 'Metode Pengiriman', 'Pembayaran'];
   const selectClass = 'input-field cursor-pointer';
   const fieldClass = (field: string) => `input-field ${errors[field] ? 'border-error-500' : ''}`;
 
